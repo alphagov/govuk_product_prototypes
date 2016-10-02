@@ -1,0 +1,12 @@
+// EXAMPLES
+
+.example{
+  @extend %contain-floats;
+  border: 1px solid $border-colour;
+  padding: $gutter $gutter 0;
+  margin-bottom: 45px;
+}
+
+.image-thumb{
+  width: 100%
+}

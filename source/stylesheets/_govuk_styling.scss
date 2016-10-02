@@ -1,0 +1,433 @@
+@import 'govuk_styles/patterns/examples';
+@import 'govuk_styles/patterns/tabs';
+@import 'govuk_styles/patterns/product-page';
+
+
+// Adjust grid to accomodate 'Platform as a Service' product name
+.govuk-paas #global-header.with-proposition .header-wrapper {
+	.header-global{ width: 50% }
+	.header-proposition{ width: 50% }
+}
+
+#wrapper{
+    min-height: 500px;
+}
+
+// Product name
+.product-name{
+	font-weight: 400;
+	padding: 0 5px;
+	font-size: 24px;
+}
+
+// Smaller phase tag in header
+#global-header .phase-banner-beta {
+    border: 0;
+	.phase-tag{
+		font-size: 14px;
+	    vertical-align: middle;
+	}
+}
+
+// Right-aligned header links
+#global-header .header-proposition #proposition-links.right-aligned{
+	li{
+		float: right;
+    	padding: 0 0 0 15px;
+	}
+}
+
+// FULL WIDTH HEADER
+
+.header-full-width{
+	#global-header .header-wrapper {
+		margin: 0;
+		max-width: none;
+	}
+
+	#global-header-bar{
+    	width: 100%;
+		max-width: none;
+    	margin-left: 0;
+	}
+}
+
+// FIXED POSITION HEADER
+
+.header-fixed-position{
+	#global-header{
+	    position: fixed;
+	    z-index: 100;
+	}
+	#global-header-bar{
+		position: fixed;
+	    top: 53px;
+	    z-index: 100;
+	}
+}
+
+// TECH DOC STYLES
+
+.techdoc{
+
+	.page-wrapper{
+		margin-left: 330px;
+	}
+
+	.page-wrapper .content{
+		padding-top: 60px;
+		padding-left: 30px;
+	}
+
+}
+
+
+.tocify-wrapper {
+	position: fixed;
+	top: 107px; //below GOV.UK header
+	top: 63px; //below GOV.UK header
+	width: 319px;
+	@include core-16;
+    border-right: 1px solid $border-colour;
+    padding-right: 10px;
+
+	ul, li {
+		line-height: 40px;
+	}
+
+	li{
+		padding-left: 5px;
+    	transition: none;
+		font-weight: bold;
+		color: #005ea5;
+	}
+
+	.tocify-header ul ul{
+		a:before{
+			content: "-";
+			padding-right: 5px;
+		}
+
+	}
+
+	.docs-name {
+		padding: 25px;
+		img {
+			width: 50px;
+			float: left;
+		}
+		h3 {
+			@include bold-24;
+			float: left;
+		}
+	}
+
+	.tocify{
+		margin-left: 10px;
+	}
+
+	.tocify-focus {
+		box-shadow: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.tocify-subheader {
+    	background: $grey-4;
+    	background: $white;
+		.tocify-item>a{
+			@include core-16;
+			font-weight: normal;
+			line-height: inherit !important;
+		}
+	}
+
+	// 3rd level TOC items
+	.tocify-header > .tocify-item a::after{
+	    //float: right;
+	    content: "\203A";		
+	    position: absolute;
+		right: 26px;
+	}
+
+    .search{
+
+    	input{
+    		padding: 10px 0 10px 20px;
+    		margin: 10px;
+    		width: 309px;
+    		color: $text-colour;
+    		border: 0;
+    		border: 2px solid $grey-1;
+    		&::-webkit-input-placeholder {
+			   color: $secondary-text-colour;
+			}
+    	}
+
+    	&::before{
+    		top: 16px;
+    		left: 10px;
+    		display: none;
+    	}
+    }
+
+    .clear-helper {
+		position: absolute;
+	    top: 22px;
+	    right: 10px;
+	    width: 20px;
+	    height: 20px;
+	    border-radius: 10px;
+	    background: $grey-1;
+	    color: white;
+	    font-weight: bold;
+	    text-align: center; 
+    	line-height: 1.5;
+	    &:hover{
+	    	cursor: pointer;
+	    } 
+  	}
+
+    .search-results{
+    	background: $grey-4;
+
+	    &.visible{
+		    background: white;
+		    padding-top: 5px; 	
+		    margin-left: 10px;
+		    border: 2px solid $grey-1;
+		    margin-top: -12px;
+		    height: 33%;
+		    li{
+		    	font-weight: normal;
+    			border-bottom: 1px solid $grey-2;
+    			padding-left: 20px;
+		    }
+	    }
+
+    	li{	
+		    margin: 5px 0 10px 0;
+		    padding-bottom: 9px;
+    	}
+    }
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+
+  .lang-selector {
+  	top: 0;
+  }
+}
+
+
+// CONTENT
+
+html, body {
+	@include core-19;
+}
+
+fieldset{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	width: inherit;
+}
+
+aside {
+	clear: both;
+}
+
+a:focus{
+	background-color: #ffbf47;
+    outline: 3px solid #ffbf47;
+}
+
+.content > h1, .content > h2, .content > h3, .content > h4, .content > h5, .content > h6, .content > p, .content > table, .content > ul, .content > ol, .content > dl {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.content p,
+.content ul,
+.content li{
+	max-width: 40em;	
+}
+
+.content table td,
+.content table th{
+	padding-left: 0;
+}
+
+.content > aside{
+	margin-right: 0;
+	text-shadow: none;
+	padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    &:before{
+    	display: none;
+    }
+}
+
+.content aside.notice{ background-color: $light-blue-25}
+.content aside.warning{ background-color: $mellow-red-50}
+.content aside.success{ background-color: $grass-green-25}
+
+.content h1:first-child {
+    font-size: 48px;
+}
+
+.content {
+
+	margin-right: 30px;
+
+	.example {
+		h1, h2, h3, p {
+			border: none;
+		}
+	}
+
+	h1{
+		background-image: none;
+		border-bottom: none;
+    	padding-left: 0;
+    	border-top: 5px solid $text-colour;
+	}
+
+	h2 {
+		@include bold-24;
+		background-image: none;
+		margin-top: 1em;
+		border: 0;
+	}
+
+	h3 {
+		@include bold-19;
+		clear: both;
+	}
+
+	h4 {
+		@include bold-19;
+		clear: both;
+	}
+	
+	ol{
+		list-style-type: decimal;
+    	margin-left: 30px;
+	}
+
+	ul{  
+		padding: 0;
+  		margin: 5px 0 20px 0;
+		list-style-type: disc;
+  		padding-left: 20px;
+	}
+
+	pre,
+	blockquote{
+		background: $grey-4;
+		color: $black;
+		text-shadow: none;
+		padding: 15px;
+	}
+
+}
+
+.highlight {
+	background-color: transparent;
+
+	.p, .o, .nt, .mf, .mi, .s2, .c, .s { color: $text-colour;}
+}
+
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #909090;
+}
+
+.highlight .p {
+}
+
+.docs-name{
+	@include bold-24;
+}
+
+.toc-footer{
+	display: none;
+}
+
+.content a {
+	color: $govuk-blue;
+}
+
+.sizer {
+	width: 60%;
+	float: left;
+	padding: 0 28px;
+    box-sizing: border-box;
+    display: block;
+    text-shadow: 0px 0px 0px #fff;
+}
+
+.page-wrapper .dark-box, .content pre,
+.page-wrapper .dark-box, .content code {
+	width: 100%;
+	font-size: 14px;
+}
+
+code{
+    white-space: nowrap;
+}
+pre code{
+    white-space: wrap;
+
+}
+
+.page-wrapper .dark-box{
+	display: none;
+
+	.lang-selector{
+		background: $white;
+		border-bottom: 5px solid $grey-4;
+    	font-size: 16px;
+	    font-weight: normal;
+
+		a{
+	    	color: $text-colour;
+    		padding: 5px 20px;		
+		}
+
+		a.active {
+	    	background-color: $grey-4;
+	    	font-weight: bold;
+		}
+	}
+}
+
+pre.highlight{
+	float: none;
+    width: 100%;
+    margin: 30px 0;
+}
+
+pre > code {
+	white-space: pre-wrap;
+}
+
+input:focus {
+	outline: 3px solid $focus-colour;
+}
+
+.form-control-1-1{
+	width: 100%;
+}
+
+

@@ -1,0 +1,32 @@
+.product-style {
+    background-color: #005EA5;
+    color: #ffffff;
+    margin-top: -10px;
+    padding-top: 30px;
+    width: 100%;
+    //height: 640px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    .button-start, .button-get-started {
+    	background-image: file-url("icon-pointer-blue.png");
+	}
+
+	a:link,
+	a:hover,
+	a:active,
+	a:visited{
+		color: $white;
+	}
+
+	a.button-start{	
+	    background-color: #fff;
+	    color: #005EA5;
+	    vertical-align: middle;
+	    margin-right: 10px;
+	}
+}
+
+.button-hint {
+    margin-top: 30px;
+}

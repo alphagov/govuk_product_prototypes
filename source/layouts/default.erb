@@ -1,0 +1,48 @@
+
+<% language_tabs = current_page.data.language_tabs || [] %>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title><%= current_page.data.title || "API Documentation" %></title>
+
+    <style>
+      <%= Rouge::Themes::Base16::Monokai.render(:scope => '.highlight') %>
+    </style>
+    <%= stylesheet_link_tag :screen, media: :screen %>
+    <%= stylesheet_link_tag :print, media: :print %>
+
+<!--[if gte IE 9]><!--><link href="/stylesheets/fonts.css" media="all" rel="stylesheet" type="text/css">
+<!--<![endif]-->
+
+    <% if current_page.data.search %>
+      <%= javascript_include_tag  "all" %>
+    <% else %>
+      <%= javascript_include_tag  "all_nosearch" %>
+    <% end %>
+  </head>
+
+  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+
+    <%= partial("includes/header", :locals => { 
+      :product      => current_page.data.product,
+      :primary_nav  => current_page.data.primary_nav,
+      :section      => current_page.data.section,
+      :phase        => current_page.data.phase
+    }) %>
+
+    <div id="wrapper">
+      <div id="content" class="content">
+        <%= yield %>
+        <% current_page.data.includes && current_page.data.includes.each do |include| %>
+          <%= partial "./#{include}" %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= partial("includes/footer") %>
+
+  </body>
+</html>
