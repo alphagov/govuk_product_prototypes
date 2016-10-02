@@ -2,8 +2,6 @@
 
 Prototypes for product pages for the GDS GaaP and Services programmes.
 
-A working prototype for documentation in GOV.UK styles, built using [slate](http://lord.github.io/slate).
-
 The prototypes are published at [https://alphagov.github.io/govuk_product_prototypes/](https://alphagov.github.io/govuk_product_prototypes/)
 
 
