@@ -1,0 +1,156 @@
+<h1 id="java-client">Java client</h1>
+
+<p>Client for the GOV.UK Notify API, built using Java 8.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="maven">Maven</h3>
+
+<p>The notifications-java-client has been deployed to <a href="https://bintray.com/gov-uk-notify/maven/notifications-java-client">Bintray</a>. Add the following snippet to your Maven <code class="prettyprint">settings.xml</code> file.
+<code class="prettyprint">xml
+&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;
+&lt;settings xsi:schemaLocation=&#39;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#39; xmlns=&#39;http://maven.apache.org/SETTINGS/1.0.0&#39; xmlns:xsi=&#39;http://www.w3.org/2001/XMLSchema-instance&#39;&gt;
+&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;repositories&gt;
+            &lt;repository&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+                &lt;id&gt;bintray-gov-uk-notify-maven&lt;/id&gt;
+                &lt;name&gt;bintray&lt;/name&gt;
+                &lt;url&gt;http://dl.bintray.com/gov-uk-notify/maven&lt;/url&gt;
+            &lt;/repository&gt;
+        &lt;/repositories&gt;
+        &lt;pluginRepositories&gt;
+            &lt;pluginRepository&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+                &lt;id&gt;bintray-gov-uk-notify-maven&lt;/id&gt;
+                &lt;name&gt;bintray-plugins&lt;/name&gt;
+                &lt;url&gt;http://dl.bintray.com/gov-uk-notify/maven&lt;/url&gt;
+            &lt;/pluginRepository&gt;
+        &lt;/pluginRepositories&gt;
+        &lt;id&gt;bintray&lt;/id&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+&lt;activeProfiles&gt;
+    &lt;activeProfile&gt;bintray&lt;/activeProfile&gt;
+&lt;/activeProfiles&gt;
+&lt;/settings&gt;
+</code>
+Then you can add the Maven dependency to your project.
+&ldquo;`xml
+    <dependency>
+        <groupId>uk.gov.service.notify</groupId>
+        <artifactId>notifications-java-client</artifactId>
+        <version>2.1.5-RELEASE</version>
+    </dependency></p>
+<pre class="highlight plaintext"><code>
+### Gradle
+</code></pre>
+
+<p>repositories {
+    mavenCentral()
+    maven {
+        url  &quot;http://dl.bintray.com/gov-uk-notify/maven&rdquo;
+    }
+}</p>
+
+<p>dependencies {
+    compile(&lsquo;uk.gov.service.notify:notifications-java-client:2.1.5-RELEASE&rsquo;)
+}
+&ldquo;`</p>
+
+<h3 id="artifactory-or-nexus">Artifactory or Nexus</h3>
+
+<p>Click &#39;set me up!&rsquo; on https://bintray.com/gov-uk-notify/maven/notifications-java-client for instructions.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p><strong>Import the <code class="prettyprint">NotificationClient</code></strong></p>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.Notification</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationResponse</span><span class="o">;</span>
+</code></pre>
+
+<p><strong>Create a new instance of <code class="prettyprint">NotificationClient</code> and objects returned by the client</strong></p>
+<pre class="highlight java"><code><span class="n">NotificationClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NotificationClient</span><span class="o">(</span><span class="n">api_key</span><span class="o">,</span> <span class="n">serviceId</span><span class="o">,</span> <span class="s">"https://api.notifications.service.gov.uk"</span><span class="o">);</span>
+</code></pre>
+
+<h2 id="send-an-email-or-text-message">Send an email or text message</h2>
+<pre class="highlight java"><code><span class="n">NotificationResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">sendEmail</span><span class="o">(</span><span class="n">templateId</span><span class="o">,</span> <span class="n">emailAddress</span><span class="o">,</span> <span class="n">personalisation</span><span class="o">);</span>
+</code></pre>
+
+<p>or</p>
+<pre class="highlight java"><code><span class="n">NotificationResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">sendSms</span><span class="o">(</span><span class="n">templateId</span><span class="o">,</span> <span class="n">mobileNumber</span><span class="o">,</span> <span class="n">personalisation</span><span class="o">);</span>
+</code></pre>
+
+<ul>
+<li><code class="prettyprint">mobileNumber</code> is the mobile phone number for the notification
+
+<ul>
+<li>must be a UK mobile number</li>
+<li>must start with +44</li>
+<li>must not have a leading zero</li>
+<li>must not have any whitespaces or punctuation</li>
+<li>valid format is +447777111222</li>
+</ul></li>
+<li><code class="prettyprint">emailAddress</code> is the email address for the notification</li>
+<li><code class="prettyprint">templateId</code> is the template to send
+
+<ul>
+<li>must be a universally unique identifier (UUID) that identifies a valid template  - templates are created in the admin tools</li>
+</ul></li>
+<li><code class="prettyprint">personalisation</code> is the placeholders to send 
+
+<ul>
+<li>must be a HashMap<String, String> which contains the key value pairs for the placeholders. </li>
+</ul></li>
+</ul>
+
+<h2 id="fetch-notification-by-id">Fetch notification by Id</h2>
+
+<p><code class="prettyprint">Notification notification = client.getNotificationById(notificationId);</code></p>
+
+<ul>
+<li><code class="prettyprint">notificationId</code> is the Id of the notification - the Id is part of the notification object returned when <code class="prettyprint">sendEmail</code> or <code class="prettyprint">sendSms</code> is called</li>
+</ul>
+
+<h2 id="fetch-all-notifications-for-your-service">Fetch all notifications for your service</h2>
+
+<p><code class="prettyprint">Notification notification = client.getNotification(status, notificationType);</code></p>
+
+<ul>
+<li><code class="prettyprint">status</code> is a string that represents the status of the notifications you want returned; options for <code class="prettyprint">status</code>:
+
+<ul>
+<li><code class="prettyprint">null</code> (for all status types)</li>
+<li><code class="prettyprint">delivered</code> </li>
+<li><code class="prettyprint">failed</code></li>
+<li><code class="prettyprint">sending</code></li>
+</ul></li>
+<li><code class="prettyprint">notificationType</code> is the type of notification to return; options for <code class="prettyprint">notificaitonType</code>:
+
+<ul>
+<li><code class="prettyprint">null</code> (for both types)</li>
+<li><code class="prettyprint">email</code> </li>
+<li><code class="prettyprint">sms</code></li>
+</ul></li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+
+<p>There is a main class that can be used to test the integration. It is also useful to read this class to see how to integrate with the notification client.</p>
+
+<p>On a command line build the project with Maven:</p>
+
+<p><code class="prettyprint">&gt; mvn test</code></p>
+
+<p>Then run Java via the Maven exec command with the following arguments:</p>
+
+<p><code class="prettyprint">&gt; mvn exec:java -Dexec.mainClass=TestNotificationClient -Dexec.args=&quot;api-key-id service-id https://api.notifications.service.gov.uk&quot;</code></p>
+
+<p>You will be prompted to select an option to submit the API call.</p>

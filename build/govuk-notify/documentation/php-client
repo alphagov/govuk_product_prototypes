@@ -1,0 +1,188 @@
+<h1 id="php-client">PHP client</h1>
+
+<p>Provided integration with the GOV.UK Notify API for sending emails and SMS messages.</p>
+
+<p>For more details, see: https://www.notifications.service.gov.uk/</p>
+
+<h4 id="psr-7-http">PSR-7 HTTP</h4>
+
+<p>The Notify PHP Client is based on a PSR-7 HTTP model. You therefore need to pick your preferred HTTP Client library to use.</p>
+
+<p>We will show examples here using the Guzzle v6 Adapter.</p>
+
+<p>Setup instructions are also available for <a href="docs/curl-client-setup.md">Curl</a> and <a href="docs/guzzle5-client-setup.md">Guzzle v5</a>.</p>
+
+<h2 id="installing">Installing</h2>
+
+<p>The Notify PHP Client can be installed with <a href="https://getcomposer.org/">Composer</a>. Run this command:</p>
+<pre class="highlight shell"><code>composer require php-http/guzzle6-adapter alphagov/notifications-php-client
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>Assuming you&rsquo;ve installed the package via Composer, the Notify PHP Client will be available via the autoloader.</p>
+
+<p>Create a (Guzzle v6 based) instance of the Client using:</p>
+<pre class="highlight php"><code>$notifyClient = new \Alphagov\Notifications\Client([
+    'serviceId'     =&gt; '{your service id}',
+    'apiKey'        =&gt; '{your api key}',
+    'httpClient'    =&gt; new \Http\Adapter\Guzzle6\Client
+]);
+</code></pre>
+
+<p>You are then able to access the Notify API using <code class="prettyprint">$notifyClient</code>.</p>
+
+<p>If you need to access an environment other than production, you can pass the base URL in via the <code class="prettyprint">baseUrl</code> key in the constructor:</p>
+<pre class="highlight php"><code>'baseUrl' =&gt; '{api base url}'
+</code></pre>
+
+<h4 id="sending-an-email">Sending an email</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+sendEmail( $to, $template, array $personalisation = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$to</strong> A required <em>string</em> holding the recipient&rsquo;s email address.</li>
+<li><strong>$template</strong> A required <em>string</em> that identifies a valid template. Templates are created in the admin tools.</li>
+<li><strong>$personalisation</strong> An optional <em>array</em> holding any personalisation placeholders required by the template.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;sendEmail( 'betty@exmple.com', 'df10a23e-2c0d-4ea5-87fb-82e520cbf93c', [
+        'name' =&gt; 'Betty Smith',
+        'dob'  =&gt; '12 July 1968'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="sending-an-sms">Sending an SMS</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+sendSms( $to, $template, array $personalisation = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$to</strong> A required <em>string</em> holding the recipient&rsquo;s mobile number. The number must:
+
+<ul>
+<li>be a UK mobile number</li>
+<li>start +44</li>
+<li>not have a leading zero</li>
+<li>not have any whitespace, punctuation etc.</li>
+</ul></li>
+<li><strong>$template</strong> A required <em>string</em> that identifies a valid template. Templates are created in the admin tools.</li>
+<li><strong>$personalisation</strong> An optional <em>array</em> holding any personalisation placeholders required by the template.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;sendSms( '+447777111222', 'df10a23e-2c6d-4ea5-87fb-82e520cbf93a', [
+        'name' =&gt; 'Betty Smith',
+        'dob'  =&gt; '12 July 1968'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="looking-up-the-details-of-a-notification">Looking up the details of a Notification</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+getNotification( $notificationId )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$notificationId</strong> A required <em>string</em> holding the notifications&rsquo;s ID; which would have been returned in response to sending a message.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;getNotification( 'c32e9c89-a423-42d2-85b7-a21cd4486a2a' );
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>Or if no notification was found for the passed ID, $response will be <code class="prettyprint">NULL</code>.</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="returning-a-list-of-notifications">Returning a list of Notifications</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+listNotifications( array $filters = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$filters</strong> An optional <em>array</em> which applies filters to the request. A requires can use zero or more filters. Supported filtered:
+
+<ul>
+<li><code class="prettyprint">status</code>; with values:
+
+<ul>
+<li>sending</li>
+<li>delivered</li>
+<li>failed</li>
+</ul></li>
+<li><code class="prettyprint">template_type</code>; with values:
+
+<ul>
+<li>email</li>
+<li>sms</li>
+</ul></li>
+<li><code class="prettyprint">page</code>; takes an <em>int</em> for pagination. Default is 1.</li>
+</ul></li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;listNotifications([
+        'status' =&gt; 'delivered',
+        'template_type' =&gt; 'sms'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h2 id="development">Development</h2>
+
+<h4 id="tests">Tests</h4>
+
+<p>To run the tests:</p>
+<pre class="highlight shell"><code>vendor/bin/phpspec run --format<span class="o">=</span>pretty
+</code></pre>
+
+<h2 id="license">License</h2>
+
+<p>The Notify PHP Client is released under the MIT license, a copy of which can be found in <a href="LICENSE.txt">LICENSE</a>.</p>

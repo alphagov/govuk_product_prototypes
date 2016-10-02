@@ -1,0 +1,1008 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" media="print" />
+
+<!--[if gte IE 9]><!--><link href="../stylesheets/fonts.css" media="all" rel="stylesheet" type="text/css">
+<!--<![endif]-->
+
+      <script src="../javascripts/all.js"></script>
+  </head>
+
+  <body class="govuk-notify govuk-notify_documentation techdoc" data-languages="[]">
+
+    <div class="header-fixed-position header-full-width">
+    <header role="banner" id="global-header" class="with-proposition">
+  <div class="header-wrapper">
+    <div class="header-global">
+      <div class="header-logo">
+        <a href="index.html" id="logo" class="content">
+          <img src="{{ asset_path }}images/gov.uk_logotype_crown_invert_trans.png?0.17.3" width="35" height="31" alt=""> GOV.UK <span class="product-name">Notify</span>
+          <span class="phase-banner-beta"><strong class="phase-tag">BETA</strong></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="header-proposition">
+      <div class="content">
+        <a href="#proposition-links" class="js-header-toggle menu">Menu</a>
+        <nav id="proposition-menu">
+          <ul id="proposition-links" class="right-aligned">
+
+              <li><a href="feedback.html">Feedback</a></li>
+<li><a href="documentation.html" class="active">Documentation</a></li>
+<li><a href="getstarted.html">Get started</a></li>
+<li><a href="index.html">About</a></li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+</header>
+<div id="global-header-bar"></div>
+    </div>
+
+    <div class="tocify-wrapper">
+      
+        <div class="lang-selector">
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id="java-client">Java client</h1>
+
+<p>Client for the GOV.UK Notify API, built using Java 8.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="maven">Maven</h3>
+
+<p>The notifications-java-client has been deployed to <a href="https://bintray.com/gov-uk-notify/maven/notifications-java-client">Bintray</a>. Add the following snippet to your Maven <code class="prettyprint">settings.xml</code> file.
+<code class="prettyprint">xml
+&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;
+&lt;settings xsi:schemaLocation=&#39;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#39; xmlns=&#39;http://maven.apache.org/SETTINGS/1.0.0&#39; xmlns:xsi=&#39;http://www.w3.org/2001/XMLSchema-instance&#39;&gt;
+&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;repositories&gt;
+            &lt;repository&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+                &lt;id&gt;bintray-gov-uk-notify-maven&lt;/id&gt;
+                &lt;name&gt;bintray&lt;/name&gt;
+                &lt;url&gt;http://dl.bintray.com/gov-uk-notify/maven&lt;/url&gt;
+            &lt;/repository&gt;
+        &lt;/repositories&gt;
+        &lt;pluginRepositories&gt;
+            &lt;pluginRepository&gt;
+                &lt;snapshots&gt;
+                    &lt;enabled&gt;false&lt;/enabled&gt;
+                &lt;/snapshots&gt;
+                &lt;id&gt;bintray-gov-uk-notify-maven&lt;/id&gt;
+                &lt;name&gt;bintray-plugins&lt;/name&gt;
+                &lt;url&gt;http://dl.bintray.com/gov-uk-notify/maven&lt;/url&gt;
+            &lt;/pluginRepository&gt;
+        &lt;/pluginRepositories&gt;
+        &lt;id&gt;bintray&lt;/id&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+&lt;activeProfiles&gt;
+    &lt;activeProfile&gt;bintray&lt;/activeProfile&gt;
+&lt;/activeProfiles&gt;
+&lt;/settings&gt;
+</code>
+Then you can add the Maven dependency to your project.
+&ldquo;`xml
+    <dependency>
+        <groupId>uk.gov.service.notify</groupId>
+        <artifactId>notifications-java-client</artifactId>
+        <version>2.1.5-RELEASE</version>
+    </dependency></p>
+<pre class="highlight plaintext"><code>
+### Gradle
+</code></pre>
+
+<p>repositories {
+    mavenCentral()
+    maven {
+        url  &quot;http://dl.bintray.com/gov-uk-notify/maven&rdquo;
+    }
+}</p>
+
+<p>dependencies {
+    compile(&lsquo;uk.gov.service.notify:notifications-java-client:2.1.5-RELEASE&rsquo;)
+}
+&ldquo;`</p>
+
+<h3 id="artifactory-or-nexus">Artifactory or Nexus</h3>
+
+<p>Click &#39;set me up!&rsquo; on https://bintray.com/gov-uk-notify/maven/notifications-java-client for instructions.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p><strong>Import the <code class="prettyprint">NotificationClient</code></strong></p>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.Notification</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">uk.gov.service.notify.NotificationResponse</span><span class="o">;</span>
+</code></pre>
+
+<p><strong>Create a new instance of <code class="prettyprint">NotificationClient</code> and objects returned by the client</strong></p>
+<pre class="highlight java"><code><span class="n">NotificationClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NotificationClient</span><span class="o">(</span><span class="n">api_key</span><span class="o">,</span> <span class="n">serviceId</span><span class="o">,</span> <span class="s">"https://api.notifications.service.gov.uk"</span><span class="o">);</span>
+</code></pre>
+
+<h2 id="send-an-email-or-text-message">Send an email or text message</h2>
+<pre class="highlight java"><code><span class="n">NotificationResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">sendEmail</span><span class="o">(</span><span class="n">templateId</span><span class="o">,</span> <span class="n">emailAddress</span><span class="o">,</span> <span class="n">personalisation</span><span class="o">);</span>
+</code></pre>
+
+<p>or</p>
+<pre class="highlight java"><code><span class="n">NotificationResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">sendSms</span><span class="o">(</span><span class="n">templateId</span><span class="o">,</span> <span class="n">mobileNumber</span><span class="o">,</span> <span class="n">personalisation</span><span class="o">);</span>
+</code></pre>
+
+<ul>
+<li><code class="prettyprint">mobileNumber</code> is the mobile phone number for the notification
+
+<ul>
+<li>must be a UK mobile number</li>
+<li>must start with +44</li>
+<li>must not have a leading zero</li>
+<li>must not have any whitespaces or punctuation</li>
+<li>valid format is +447777111222</li>
+</ul></li>
+<li><code class="prettyprint">emailAddress</code> is the email address for the notification</li>
+<li><code class="prettyprint">templateId</code> is the template to send
+
+<ul>
+<li>must be a universally unique identifier (UUID) that identifies a valid template  - templates are created in the admin tools</li>
+</ul></li>
+<li><code class="prettyprint">personalisation</code> is the placeholders to send 
+
+<ul>
+<li>must be a HashMap<String, String> which contains the key value pairs for the placeholders. </li>
+</ul></li>
+</ul>
+
+<h2 id="fetch-notification-by-id">Fetch notification by Id</h2>
+
+<p><code class="prettyprint">Notification notification = client.getNotificationById(notificationId);</code></p>
+
+<ul>
+<li><code class="prettyprint">notificationId</code> is the Id of the notification - the Id is part of the notification object returned when <code class="prettyprint">sendEmail</code> or <code class="prettyprint">sendSms</code> is called</li>
+</ul>
+
+<h2 id="fetch-all-notifications-for-your-service">Fetch all notifications for your service</h2>
+
+<p><code class="prettyprint">Notification notification = client.getNotification(status, notificationType);</code></p>
+
+<ul>
+<li><code class="prettyprint">status</code> is a string that represents the status of the notifications you want returned; options for <code class="prettyprint">status</code>:
+
+<ul>
+<li><code class="prettyprint">null</code> (for all status types)</li>
+<li><code class="prettyprint">delivered</code> </li>
+<li><code class="prettyprint">failed</code></li>
+<li><code class="prettyprint">sending</code></li>
+</ul></li>
+<li><code class="prettyprint">notificationType</code> is the type of notification to return; options for <code class="prettyprint">notificaitonType</code>:
+
+<ul>
+<li><code class="prettyprint">null</code> (for both types)</li>
+<li><code class="prettyprint">email</code> </li>
+<li><code class="prettyprint">sms</code></li>
+</ul></li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+
+<p>There is a main class that can be used to test the integration. It is also useful to read this class to see how to integrate with the notification client.</p>
+
+<p>On a command line build the project with Maven:</p>
+
+<p><code class="prettyprint">&gt; mvn test</code></p>
+
+<p>Then run Java via the Maven exec command with the following arguments:</p>
+
+<p><code class="prettyprint">&gt; mvn exec:java -Dexec.mainClass=TestNotificationClient -Dexec.args=&quot;api-key-id service-id https://api.notifications.service.gov.uk&quot;</code></p>
+
+<p>You will be prompted to select an option to submit the API call.</p>
+
+          <h1 id="node-js-client">Node.js client</h1>
+
+<h2 id="installation">Installation</h2>
+<pre class="highlight shell"><code>npm install notifications-node-client
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">NotifyClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'notifications-node-client'</span><span class="p">).</span><span class="nx">NotifyClient</span><span class="p">,</span>
+
+<span class="nx">notifyClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NotifyClient</span><span class="p">(</span>
+  <span class="s2">"https://api.notifications.service.gov.uk"</span><span class="p">,</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NOTIFY_SERVICE_ID</span><span class="p">,</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NOTIFY_SECRET</span> <span class="c1">// API Key</span>
+<span class="p">);</span>
+</code></pre>
+
+<p>Generate an API key by logging in to
+<a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to
+the <em>API integration</em> page.</p>
+
+<p>You will also find your service ID on the <em>API integration</em> page.</p>
+
+<h2 id="send-a-message">Send a message</h2>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendEmail</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">emailAddress</span><span class="p">,</span> <span class="nx">personalisation</span><span class="p">);</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendSms</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">phoneNumber</span><span class="p">,</span> <span class="nx">personalisation</span><span class="p">);</span>
+</code></pre>
+
+<p>Find template_id by clicking API info for the template you want to send.</p>
+
+<h3 id="with-personalisation">With personalisation</h3>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendSms</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">phoneNumber</span><span class="p">,</span> <span class="nx">personalisation</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Amala'</span><span class="p">,</span>
+    <span class="s1">'reference_number'</span><span class="p">:</span> <span class="s1">'300241'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre>
+
+          <h1 id="php-client">PHP client</h1>
+
+<p>Provided integration with the GOV.UK Notify API for sending emails and SMS messages.</p>
+
+<p>For more details, see: https://www.notifications.service.gov.uk/</p>
+
+<h4 id="psr-7-http">PSR-7 HTTP</h4>
+
+<p>The Notify PHP Client is based on a PSR-7 HTTP model. You therefore need to pick your preferred HTTP Client library to use.</p>
+
+<p>We will show examples here using the Guzzle v6 Adapter.</p>
+
+<p>Setup instructions are also available for <a href="docs/curl-client-setup.md">Curl</a> and <a href="docs/guzzle5-client-setup.md">Guzzle v5</a>.</p>
+
+<h2 id="installing">Installing</h2>
+
+<p>The Notify PHP Client can be installed with <a href="https://getcomposer.org/">Composer</a>. Run this command:</p>
+<pre class="highlight shell"><code>composer require php-http/guzzle6-adapter alphagov/notifications-php-client
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>Assuming you&rsquo;ve installed the package via Composer, the Notify PHP Client will be available via the autoloader.</p>
+
+<p>Create a (Guzzle v6 based) instance of the Client using:</p>
+<pre class="highlight php"><code>$notifyClient = new \Alphagov\Notifications\Client([
+    'serviceId'     =&gt; '{your service id}',
+    'apiKey'        =&gt; '{your api key}',
+    'httpClient'    =&gt; new \Http\Adapter\Guzzle6\Client
+]);
+</code></pre>
+
+<p>You are then able to access the Notify API using <code class="prettyprint">$notifyClient</code>.</p>
+
+<p>If you need to access an environment other than production, you can pass the base URL in via the <code class="prettyprint">baseUrl</code> key in the constructor:</p>
+<pre class="highlight php"><code>'baseUrl' =&gt; '{api base url}'
+</code></pre>
+
+<h4 id="sending-an-email">Sending an email</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+sendEmail( $to, $template, array $personalisation = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$to</strong> A required <em>string</em> holding the recipient&rsquo;s email address.</li>
+<li><strong>$template</strong> A required <em>string</em> that identifies a valid template. Templates are created in the admin tools.</li>
+<li><strong>$personalisation</strong> An optional <em>array</em> holding any personalisation placeholders required by the template.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;sendEmail( 'betty@exmple.com', 'df10a23e-2c0d-4ea5-87fb-82e520cbf93c', [
+        'name' =&gt; 'Betty Smith',
+        'dob'  =&gt; '12 July 1968'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="sending-an-sms">Sending an SMS</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+sendSms( $to, $template, array $personalisation = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$to</strong> A required <em>string</em> holding the recipient&rsquo;s mobile number. The number must:
+
+<ul>
+<li>be a UK mobile number</li>
+<li>start +44</li>
+<li>not have a leading zero</li>
+<li>not have any whitespace, punctuation etc.</li>
+</ul></li>
+<li><strong>$template</strong> A required <em>string</em> that identifies a valid template. Templates are created in the admin tools.</li>
+<li><strong>$personalisation</strong> An optional <em>array</em> holding any personalisation placeholders required by the template.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;sendSms( '+447777111222', 'df10a23e-2c6d-4ea5-87fb-82e520cbf93a', [
+        'name' =&gt; 'Betty Smith',
+        'dob'  =&gt; '12 July 1968'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="looking-up-the-details-of-a-notification">Looking up the details of a Notification</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+getNotification( $notificationId )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$notificationId</strong> A required <em>string</em> holding the notifications&rsquo;s ID; which would have been returned in response to sending a message.</li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;getNotification( 'c32e9c89-a423-42d2-85b7-a21cd4486a2a' );
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>Or if no notification was found for the passed ID, $response will be <code class="prettyprint">NULL</code>.</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h4 id="returning-a-list-of-notifications">Returning a list of Notifications</h4>
+
+<p>The method signature is:
+<code class="prettyprint">php
+listNotifications( array $filters = array() )
+</code></p>
+
+<p>Where</p>
+
+<ul>
+<li><strong>$filters</strong> An optional <em>array</em> which applies filters to the request. A requires can use zero or more filters. Supported filtered:
+
+<ul>
+<li><code class="prettyprint">status</code>; with values:
+
+<ul>
+<li>sending</li>
+<li>delivered</li>
+<li>failed</li>
+</ul></li>
+<li><code class="prettyprint">template_type</code>; with values:
+
+<ul>
+<li>email</li>
+<li>sms</li>
+</ul></li>
+<li><code class="prettyprint">page</code>; takes an <em>int</em> for pagination. Default is 1.</li>
+</ul></li>
+</ul>
+
+<p>An example request would look like:</p>
+<pre class="highlight php"><code>try {
+
+    $response = $notifyClient-&gt;listNotifications([
+        'status' =&gt; 'delivered',
+        'template_type' =&gt; 'sms'
+    ]);
+
+} catch (NotifyException $e){}
+</code></pre>
+
+<p><strong>$response</strong> will be an <em>array</em> containing the decoded JSON response from the Notify API. For details, see: https://www.notifications.service.gov.uk/documentation</p>
+
+<p>An instance (or sub-class) of <code class="prettyprint">Alphagov\Notifications\Exception\NotifyException</code> will be throw if an error occurs.</p>
+
+<h2 id="development">Development</h2>
+
+<h4 id="tests">Tests</h4>
+
+<p>To run the tests:</p>
+<pre class="highlight shell"><code>vendor/bin/phpspec run --format<span class="o">=</span>pretty
+</code></pre>
+
+<h2 id="license">License</h2>
+
+<p>The Notify PHP Client is released under the MIT license, a copy of which can be found in <a href="LICENSE.txt">LICENSE</a>.</p>
+
+          <h1 id="python-client">Python client</h1>
+
+<h2 id="installation">Installation</h2>
+<pre class="highlight shell"><code>pip install git+https://github.com/alphagov/notifications-python-client.git
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">notifications_python_client.notifications</span> <span class="kn">import</span> <span class="n">NotificationsAPIClient</span>
+
+<span class="n">notifications_client</span> <span class="o">=</span> <span class="n">NotificationsAPIClient</span><span class="p">(</span>
+    <span class="s">"https://api.notifications.service.gov.uk"</span><span class="p">,</span>
+    <span class="n">service_id</span><span class="o">=</span><span class="n">service_id</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Generate an API key by logging in to
+<a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to
+the <strong>API integration</strong> page.</p>
+
+<p>You will find your service ID on the <strong>API integration</strong> page.</p>
+
+<h2 id="send-a-message">Send a message</h2>
+
+<p>Text message:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_sms_notification</span><span class="p">(</span>
+    <span class="n">mobile_number</span><span class="p">,</span>
+    <span class="n">template_id</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Email:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span>
+    <span class="n">email_address</span><span class="p">,</span>
+    <span class="n">template_id</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Find <code class="prettyprint">template_id</code> by clicking <strong>API info</strong> for the template you want to send.</p>
+
+<p>If a template has placeholders, you need to provide their values in <code class="prettyprint">personalisation</code>,
+for example:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span>
+    <span class="n">email_address</span><span class="p">,</span>
+    <span class="n">template_id</span><span class="p">,</span>
+    <span class="n">personalisation</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'first_name'</span><span class="p">:</span> <span class="s">'Amala'</span><span class="p">,</span>
+        <span class="s">'reference_number'</span><span class="p">:</span> <span class="s">'300241'</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary></p>
+
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td>
+<pre>
+{
+  "data":{
+    "notification": {
+      "id":1
+    },
+    "body": "Dear Bill, your licence is due for renewal on 3 January 2016.",
+    "template_version": 1,
+    "subject": "Licence renewal"
+  }
+}
+</pre> 
+        </td>
+    </tr>
+    <tr>
+        <td>429
+        </td>
+        <td>
+<pre>
+{"result": "error",
+"message": "Exceeded send limits (50) for today"}
+</pre>
+        </td>
+    </tr>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{"result":"error",
+"message": "Can’t send to this recipient using a team-only API key"]} 
+</pre>
+        </td>
+    </tr>
+        </tr>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{"result":"error", 
+"message"="Can’t send to this recipient when service is in trial 
+mode - see https://www.notifications.service.gov.uk/trial-mode"]}
+</pre>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<p></details> </p>
+
+<h2 id="get-the-status-of-one-message">Get the status of one message</h2>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">get_notification_by_id</span><span class="p">(</span><span class="n">notification_id</span><span class="p">)</span>
+</code></pre>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary>
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td></p>
+
+<pre>
+{
+  "data": {
+    "notification": {
+      "status": "delivered",
+      "to": "07515 987 456",
+      "template": {
+        "id": "5e427b42-4e98-46f3-a047-32c4a87d26bb",
+        "name": "First template",
+        "template_type": "sms"
+      },
+      "created_at": "2016-04-26T15:29:36.891512+00:00",
+      "updated_at": "2016-04-26T15:29:38.724808+00:00",
+      "sent_at": "2016-04-26T15:29:37.230976+00:00",
+      "job": {
+        "id": "f9043884-acac-46db-b2ea-f08cd8ec6d67",
+        "original_file_name": "Test run"
+      },
+      "sent_at": "2016-04-26T15:29:37.230976+00:00",
+      "id": "f163deaf-2d3f-4ec6-98fc-f23fa511518f",
+      "content_char_count": 490,
+      "service": "5cf87313-fddd-4482-a2ea-48e37320efd1",
+      "reference": None,
+      "sent_by": "mmg",
+      "body": "Dear Bill, your licence is due for renewal on 3 January 2016."
+      "date": "3 January 2016"
+    }
+  }
+}
+</pre> 
+
+<p></td>
+    </tr>
+    <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;, 
+&quot;message&quot;: &quot;id: required field&quot;}<br>
+</pre>
+        </td>
+    </tr>
+        <tr>
+        <td>404
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: &quot;No result found&quot;}<br>
+</pre>
+        </td>
+    </tr></p>
+
+<p></tbody>
+</table></p>
+
+<p></details> </p>
+
+<h2 id="get-the-status-of-all-messages">Get the status of all messages</h2>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">get_all_notifications</span><span class="p">(</span><span class="n">template_type</span><span class="o">=</span><span class="s">"email"</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s">"sending"</span><span class="p">)</span>
+</code></pre>
+
+<p>Optional <code class="prettyprint">template_type</code> can be one of:</p>
+
+<ul>
+<li><code class="prettyprint">email</code></li>
+<li><code class="prettyprint">sms</code></li>
+</ul>
+
+<p>Optional <code class="prettyprint">status</code> can be one of:</p>
+
+<ul>
+<li><code class="prettyprint">sending</code></li>
+<li><code class="prettyprint">delivered</code></li>
+<li><code class="prettyprint">permanent-failure</code></li>
+<li><code class="prettyprint">temporary-failure</code></li>
+<li><code class="prettyprint">technical-failure</code></li>
+</ul>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary>
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td>
+<pre>
+{&quot;notifications&quot;:
+  [{
+    &quot;status&quot;: &quot;delivered&quot;,
+    &quot;to&quot;: &quot;07515 987 456&quot;,
+    &quot;template&quot;: {
+      &quot;id&quot;: &quot;5e427b42-4e98-46f3-a047-32c4a87d26bb&quot;,
+      &quot;name&quot;: &quot;First template&quot;,
+      &quot;template_type&quot;: &quot;sms&quot;
+    },
+    &quot;job&quot;: {
+      &quot;id&quot;: &quot;5cc9d7ae-ceb7-4565-8345-4931d71f8c2e&quot;,
+      &quot;original_file_name&quot;: &quot;Test run&quot;
+    },
+    &quot;created_at&quot;: &quot;2016-04-26T15:30:49.968969+00:00&quot;,
+    &quot;updated_at&quot;: &quot;2016-04-26T15:30:50.853844+00:00&quot;,
+    &quot;sent_at&quot;: &quot;2016-04-26T15:30:50.383634+00:00&quot;,
+    &quot;id&quot;: &quot;04ae9bdc-92aa-4d6c-a0da-48587c03d4c7&quot;,
+    &quot;content_char_count&quot;: 446,
+    &quot;service&quot;: &quot;5cf87313-fddd-4482-a2ea-48e37320efd1&quot;,
+    &quot;reference&quot;: None,
+    &quot;sent_by&quot;: &quot;mmg&quot;
+    },
+    {
+    &quot;status&quot;: &quot;delivered&quot;,
+    &quot;to&quot;: &quot;07515 987 456&quot;,
+    &quot;template&quot;: {
+      &quot;id&quot;: &quot;5e427b42-4e98-46f3-a047-32c4a87d26bb&quot;,
+      &quot;name&quot;: &quot;First template&quot;,
+      &quot;template_type&quot;: &quot;sms&quot;
+    },
+    &quot;job&quot;: {
+      &quot;id&quot;: &quot;f9043884-acac-46db-b2ea-f08cd8ec6d67&quot;,
+      &quot;original_file_name&quot;: &quot;Test run&quot;
+    },
+    &quot;created_at&quot;: &quot;2016-04-26T15:29:36.891512+00:00&quot;,
+    &quot;updated_at&quot;: &quot;2016-04-26T15:29:38.724808+00:00&quot;,
+    &quot;sent_at&quot;: &quot;2016-04-26T15:29:37.230976+00:00&quot;,
+    &quot;id&quot;: &quot;f163deaf-2d3f-4ec6-98fc-f23fa511518f&quot;,
+    &quot;content_char_count&quot;: 490,
+    &quot;service&quot;: &quot;5cf87313-fddd-4482-a2ea-48e37320efd1&quot;,
+    &quot;reference&quot;: None,
+    &quot;sent_by&quot;: &quot;mmg&quot;
+    },
+    …
+  ],
+  &quot;links&quot;: {
+    &quot;last&quot;: &quot;/notifications?page=3&amp;template_type=sms&amp;status=delivered&quot;,
+    &quot;next&quot;: &quot;/notifications?page=2&amp;template_type=sms&amp;status=delivered&quot;
+  },
+  &quot;total&quot;: 162,
+  &quot;page_size&quot;: 50
+}
+</pre> 
+        </td>
+    </tr>
+    <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: {&quot;status&quot;: {&quot;0&quot;: {&quot;status&quot;: [&quot;Not a valid choice.&quot;&quot;]}}},}
+</pre>
+        </td>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: {&quot;template_type&quot;: {&quot;0&quot;: {&quot;template_type&quot;: [&quot;Not a valid choice.&quot;&quot;]}}},}
+</pre>
+        </td>
+    </tr>
+    </tr></p>
+
+<p></tbody>
+</table></p>
+
+<p></details> </p>
+
+          <h1 id="ruby-client">Ruby client</h1>
+
+<p>API client for GOV.UK Notify written in Ruby.</p>
+
+<p><a href="https://badge.fury.io/rb/notifications-ruby-client"><img alt="Gem Version" src="https://badge.fury.io/rb/notifications-ruby-client.svg" /></a></p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Prior to usage an account must be created through the Notify admin console. This will allow access to the API credentials you application.</p>
+
+<p>You can then install the gem or require it in your application.</p>
+<pre class="highlight plaintext"><code>gem install 'notifications-ruby-client'
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'notifications/client'</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">service_id</span><span class="p">,</span> <span class="n">secret_id</span><span class="p">)</span>
+</code></pre>
+
+<p>you can also override api endpoint</p>
+<pre class="highlight ruby"><code><span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">service_id</span><span class="p">,</span> <span class="n">secret_id</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+<span class="n">client</span><span class="p">.</span><span class="nf">base_url</span> <span class="c1"># =&gt; Notifications::Client::PRODUCTION_BASE_URL</span>
+</code></pre>
+
+<p>Generate an API key by logging in to GOV.UK Notify <a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to the API integration page.</p>
+
+<p>You will find your service ID on the API integration page.</p>
+
+<h3 id="send-a-message">Send a message</h3>
+
+<p>Text message:</p>
+<pre class="highlight ruby"><code><span class="n">sms</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">send_sms</span><span class="p">(</span><span class="ss">to: </span><span class="n">number</span><span class="p">,</span> 
+                      <span class="ss">template: </span><span class="n">template_id</span><span class="p">,</span>
+                      <span class="ss">personalisation: </span><span class="p">{</span>
+                      <span class="ss">name: </span><span class="s2">"name"</span><span class="p">,</span>
+                      <span class="ss">year: </span><span class="s2">"2016"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+</code></pre>
+
+<p>Email:
+&ldquo;`ruby
+email = client.send_email(to: number, template: template_id)</p>
+
+<p>sms = client.send_sms(
+  to: number,
+  template: template_id,
+  personalisation: {
+    name: &quot;name&rdquo;,
+    year: &ldquo;2016&rdquo;
+  }
+) # =&gt; Notifications::Client::ResponseNotification
+&ldquo;`</p>
+
+<p>Find <code class="prettyprint">template_id</code> by clicking <strong>API info</strong> for the template you want to send.</p>
+
+<p>If a template has placeholders, you need to provide their values in <code class="prettyprint">personalisation</code>. Otherwise do not pass in <code class="prettyprint">personalisation</code></p>
+
+<p>If successful the response is a <code class="prettyprint">Notifications::Client::ResponseNotification</code>, which has the notification id.
+Otherwise a Notifications::Client::RequestError is returned.</p>
+
+<h3 id="get-the-status-of-one-message">Get the status of one message</h3>
+<pre class="highlight ruby"><code><span class="n">notification</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">get_notification</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1"># =&gt; Notifications::Client::Notification</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">id</span>         <span class="c1"># =&gt; uuid for the notification</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">to</span>         <span class="c1"># =&gt; recipient email address or mobile number</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">status</span>     <span class="c1"># =&gt; status of the message "created|pending|sent|delivered|permanent-failure|temporary-failure" </span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">created_at</span> <span class="c1"># =&gt; Date time the message was created</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">api_key</span>    <span class="c1"># =&gt; uuid for the api key (not the actual api key)</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">billable_units</span> <span class="c1"># =&gt; units billable or nil for email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">subject</span>    <span class="c1"># =&gt; Subject of email or nil for sms</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">body</span>       <span class="c1"># =&gt; Body of message</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">job</span>        <span class="c1"># =&gt; job id if created by a csv or nil if message sent via api</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">notification_type</span> <span class="c1"># =&gt; sms | email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">service</span>    <span class="c1"># =&gt; uuid for service</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">sent_at</span>    <span class="c1"># =&gt; Date time the message is sent to the provider or nil if status = "created"</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">sent_by</span>    <span class="c1"># =&gt; Name of the provider that sent the message or nil if status = "created"</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">template</span>   <span class="c1"># =&gt; Hash containing template id, name, version, template type sms|email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">template_version</span> <span class="c1"># Template version number</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">reference</span>  <span class="c1"># =&gt; reference of the email or nil for sms</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">updated_at</span> <span class="c1"># =&gt; Date time that the notification was last updated</span>
+</code></pre>
+
+<h3 id="get-the-status-of-all-messages">Get the status of all messages</h3>
+<pre class="highlight ruby"><code><span class="n">notifications</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">get_notifications</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">links</span> <span class="c1"># =&gt; {"last"=&gt;"/notifications?page=4", "next"=&gt;"/notifications?page=2"}</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">total</span> <span class="c1"># =&gt; 202</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">page_size</span> <span class="c1"># =&gt; 50</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">collection</span> <span class="c1"># =&gt; [] (array of notification objects)</span>
+
+</code></pre>
+
+<p>Query parameters are also supported</p>
+<pre class="highlight ruby"><code><span class="n">client</span><span class="p">.</span><span class="nf">get_notifications</span><span class="p">(</span>
+  <span class="ss">page: </span><span class="mi">2</span><span class="p">,</span>
+  <span class="ss">limit_days: </span><span class="mi">3</span><span class="p">,</span>
+  <span class="ss">page_size: </span><span class="mi">20</span><span class="p">,</span>
+  <span class="ss">status: </span><span class="s2">"delivered"</span><span class="p">,</span>
+  <span class="ss">template_type: </span><span class="s2">"sms"</span>
+<span class="p">)</span>
+</code></pre>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>Raised exceptions will contain error message and response status code</p>
+<pre class="highlight ruby"><code><span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">invalid</span><span class="p">,</span> <span class="n">invalid</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="o">::</span><span class="no">RequestError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+<span class="n">e</span><span class="p">.</span><span class="nf">code</span> <span class="c1"># =&gt; 403</span>
+<span class="n">e</span><span class="p">.</span><span class="nf">message</span> <span class="c1"># =&gt; Invalid credentials</span>
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <td> Code </td>
+      <td> Message </td>
+     </tr>
+  </thead>
+  <tbdoy>
+  <tr>
+    <td> 403 </td>
+    <td> {&quot;token&rdquo;=>[&ldquo;Invalid token: signature&rdquo;]} </td>
+  </tr>
+  <tr>
+    <td> 403 </td>
+    <td> {&ldquo;token&rdquo;=>[&ldquo;Invalid token: expired&rdquo;]} </td>
+  </tr>
+  <tr>
+    <td> 429 </td>
+    <td> Exceeded send limits (50) for today </td>
+  </tr>
+  <tr>
+    <td> 400 </td>
+    <td> Can’t send to this recipient using a team-only API key </td>
+  </tr>
+  <tr>
+    <td> 400 </td>
+    <td> Can’t send to this recipient when service is in trial 
+          mode - see https://www.notifications.service.gov.uk/trial-mode
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+          </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<h2 id="deploying-a-static-site">Deploying a static site</h2>
+
+<p>This section explains how to create and deploy a static HTML page. It&rsquo;s
+worth testing that you can carry out this process before you try to deploy a more complex app.</p>
+
+<p>When you deploy an app, you must select a combination of an organisation and a space: this is called the <strong>target</strong> (see <a href="#orgs-spaces-and-targets">Orgs, spaces and targets</a> for more information).</p>
+
+<p>We have provided a <code class="prettyprint">sandbox</code> space for you to use for learning about the PaaS. You may want to target the sandbox while you are testing by running:</p>
+
+<p><code class="prettyprint">cf target -s sandbox</code></p>
+
+<p>It&rsquo;s also important to realise that if you deploy an app using the same name and target as an existing app, the original will be replaced. If you are not sure about where to deploy your app, consult the rest of your team.</p>
+
+<p>These steps assume you have already carried out the setup process explained in the <a href="#quick-setup-guide">Quick setup guide</a> section.</p>
+
+<ol>
+<li><p>In an empty directory, create an <code class="prettyprint">index.html</code> file.</p></li>
+<li><p>Add some markup to the <code class="prettyprint">index.html</code> file:</p>
+<pre class="highlight html"><code><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Static Site<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Welcome to the static site!<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></li>
+<li><p>Create a <code class="prettyprint">manifest.yml</code> file in the same directory. The manifest file tells 
+Cloud Foundry what to do with your app.</p>
+<pre class="highlight plaintext"><code>---
+applications:
+- name: my-static-site
+  memory: 64M
+  buildpack: staticfile_buildpack
+</code></pre>
+
+<p>Replace <code class="prettyprint">my-static-site</code> with a unique name for your app. (You can use <code class="prettyprint">cf apps</code> to see apps which already exist).</p>
+
+<p>The <code class="prettyprint">memory</code> line tells the PaaS how much memory to allocate to the app.</p>
+
+<p>A buildpack provides any framework and runtime support required by an app. If your app was written in Ruby, you would use <code class="prettyprint">ruby_buildpack</code>. In this case, we just want to serve a static file, so we use <code class="prettyprint">staticfile_buildpack</code>.</p></li>
+<li><p>From the directory where the <code class="prettyprint">manifest.yml</code> file is, run:</p>
+
+<p><code class="prettyprint">
+cf push
+</code></p>
+
+<p>If you do not specify an app name with the <code class="prettyprint">push</code> command, the name  specified in the manifest file is used.</p></li>
+</ol>
+
+<p>The site should now be live at <code class="prettyprint">https://APPNAME.cloudapps.digital</code>.</p>
+
+<p><strong>Note:</strong> The <code class="prettyprint">http://</code> version of the URL will not work. You must enter <code class="prettyprint">https://</code>.</p>
+
+<h3 id="adding-more-instances">Adding more instances</h3>
+
+<p>For a production site, you should run at least two instances of the app to ensure availability.</p>
+
+<p>You can add another instance of this static app by running:</p>
+
+<p><code class="prettyprint">cf scale APPNAME -i 2</code></p>

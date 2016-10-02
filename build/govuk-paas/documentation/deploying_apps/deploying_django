@@ -1,0 +1,118 @@
+<h2 id="deploying-a-django-app">Deploying a Django app</h2>
+
+<p>This section explains how to deploy an app using the Django framework. You may also need to refer to the <a href="https://docs.cloudfoundry.org/buildpacks/python/index.html">Cloud Foundry documentation about the Python buildpack</a> [external link].</p>
+
+<p>Note that the only database service currently supported by PaaS is PostgreSQL. If your Django app requires a database, it must be able to work with PostgreSQL.</p>
+
+<p>These steps assume you have already carried out the setup process explained in the <a href="#quick-setup-guide">Quick setup guide</a> section.</p>
+
+<p>If you are just getting started learning CloudFoundry, you can use the sandbox space by running: <code class="prettyprint">cf target -s sandbox</code></p>
+
+<ol>
+<li><p>Check out your Django app to a local folder.</p></li>
+<li><p>Add <code class="prettyprint">*.pyc</code> and <code class="prettyprint">local_settings.py</code> to your <code class="prettyprint">.gitignore</code>, file, then 
+<a href="#excluding-files">exclude files ignored by Git</a> so Cloud Foundry will ignore them too.</p></li>
+<li><p>Tell Cloud Foundry which Python runtime to use by creating a <code class="prettyprint">runtime.txt</code>   file in the root of the local folder. The contents of the file should<br>
+be:
+<code class="prettyprint">
+python-3.5.1  
+</code>
+replacing &ldquo;3.5.1&rdquo; with the version of Python you want to use (it must be supported by the buildpack: currently versions 2.7.11 to 3.5.2 are supported.)</p></li>
+<li><p>Make sure you have all the required modules for your project
+installed into your virtual environment (including Django).</p></li>
+<li><p>Generate a <code class="prettyprint">requirements.txt</code> file if your project doesn&rsquo;t already have one by running <code class="prettyprint">pip freeze &gt; requirements.txt</code> in the root of the local folder.
+Add the following lines to the <code class="prettyprint">requirements.txt</code> file.</p>
+<pre class="highlight python"><code><span class="n">whitenoise</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span>  <span class="c">#manages static assets</span>
+<span class="n">waitress</span><span class="o">==</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">9</span> <span class="c">#a pure python WSGI server that is a replacement for gunicorn</span>
+</code></pre></li>
+<li><p>Edit your <code class="prettyprint">wsgi.py</code> file.</p>
+
+<p>When you create a Django project, a default <code class="prettyprint">wsgi.py</code> file should be created for you in the project folder. Excluding the opening comments, the default <code class="prettyprint">wsgi.py</code> looks like this:</p>
+<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">"DJANGO_SETTINGS_MODULE"</span><span class="p">,</span> <span class="s">"PROJECTNAME.settings"</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">django.core.wsgi</span> <span class="kn">import</span> <span class="n">get_wsgi_application</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">get_wsgi_application</span><span class="p">()</span>
+</code></pre>
+
+<p>You&rsquo;ll need to add a few lines to import the <code class="prettyprint">whitenoise</code> package and wrap the middleware around the WSGI application so that all static files are served using whitenoise. Edit your <code class="prettyprint">wsgi.py</code> to:</p>
+<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">django.core.wsgi</span> <span class="kn">import</span> <span class="n">get_wsgi_application</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s">"DJANGO_SETTINGS_MODULE"</span><span class="p">,</span> <span class="s">"PROJECTNAME.settings"</span><span class="p">)</span>
+<span class="c"># important that the whitenoise import is after the line above</span>
+<span class="kn">from</span> <span class="nn">whitenoise.django</span> <span class="kn">import</span> <span class="n">DjangoWhiteNoise</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">get_wsgi_application</span><span class="p">()</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">DjangoWhiteNoise</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+</code></pre>
+
+<p>The order here is important. The <code class="prettyprint">DJANGO_SETTINGS_MODULE</code> environment variable must be set before importing <code class="prettyprint">DjangoWhiteNoise</code>.</p></li>
+<li><p>You should now tell Django where to look for static files. In <code class="prettyprint">settings.py</code> within the project folder, add these lines below the <code class="prettyprint">import os</code> statement.</p>
+<pre class="highlight python"><code><span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_ROOT</span><span class="p">,</span> <span class="s">'static'</span><span class="p">)</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
+</code></pre>
+
+<p>In this case, the STATIC_ROOT variable tells Django to look for static files in a directory called <code class="prettyprint">static</code> inside the project folder, and the STATIC_URL variable sets the path where those files will be served.</p>
+
+<p>You may need to alter these values depending on how static files are handled in your app.</p>
+
+<p>If your static files are located across multiple folders, you may need to use the STATICFILES_DIRS variable. See the Django documentation for <a href="https://docs.djangoproject.com/en/1.9/howto/static-files/">full details on managing static files</a>.</p></li>
+<li><p>Create a file called <code class="prettyprint">Procfile</code> in the root of your local folder, 
+and put in it:</p>
+
+<p><code class="prettyprint">web: python manage.py migrate &amp;&amp; waitress-serve --port=$PORT PROJECTNAME.wsgi:application</code></p>
+
+<p><code class="prettyprint">PROJECTNAME</code> should be replaced with whatever the name of your WSGI module is. By default, this is the same as the name of your project module, but it may be changed using the DJANGO_SETTINGS_MODULE environment variable. Using this configuration will automatically apply any database migrations.</p></li>
+<li><p>Create a <code class="prettyprint">manifest.yml</code> file in the root of your local folder.</p>
+<pre class="highlight plaintext"><code>---
+applications:
+- name: my-app
+  memory: 512M
+  buildpack: python_buildpack
+</code></pre>
+
+<p>where <code class="prettyprint">my-django-app</code> is the name that will be used for the app within Government PaaS.</p>
+
+<p>Replace <code class="prettyprint">my-django-app</code> with a unique name for your app. (You can use <code class="prettyprint">cf apps</code> to see apps which already exist).</p>
+
+<p>The <code class="prettyprint">memory</code> line tells the PaaS how much memory to allocate to the app.</p></li>
+<li><p>If your app requires a database, <a href="#using-a-postgresql-service">create a PostgreSQL backing service and bind it to your app</a>. Then see the section on PostgreSQL setup below.</p></li>
+<li><p>To push your app, do:</p>
+
+<p><code class="prettyprint">cf push APPNAME</code></p>
+
+<p>from the local folder.</p>
+
+<p>If you want to upload the app without starting it (for example, if you need to create a PostgreSQL service), run <code class="prettyprint">cf push --no-start APPNAME</code>, then when you are ready to start the app, run <code class="prettyprint">cf start APPNAME</code>.</p></li>
+</ol>
+
+<p>You can now view your app at <code class="prettyprint">https://APPNAME.cloudapps.digital</code>.</p>
+
+<h3 id="postgresql-setup-with-django">PostgreSQL setup with Django</h3>
+
+<p>Add these lines to your <code class="prettyprint">requirements.txt</code>:</p>
+<pre class="highlight python"><code><span class="n">psycopg2</span><span class="o">==</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">2</span> <span class="c">#installs the postgres driver</span>
+<span class="n">dj</span><span class="o">-</span><span class="n">database</span><span class="o">-</span><span class="n">url</span><span class="o">==</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">0</span> <span class="c">#grabs environment variables and dumps them into a Django settings file</span>
+</code></pre>
+
+<p>In your <code class="prettyprint">settings.py</code> file, make sure you import the <code class="prettyprint">dj_database_url</code> package we added to the <code class="prettyprint">requirements.txt</code> file above:</p>
+<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">dj_database_url</span>
+</code></pre>
+
+<p>This package will automatically parse the <code class="prettyprint">VCAP_SERVICES</code> environment variable and set DATABASE_URL to the first database found.</p>
+
+<p>Then, you&rsquo;ll need to add a <code class="prettyprint">DATABASES</code> setting. It&rsquo;s best to add this to the <code class="prettyprint">settings.py</code> file. </p>
+<pre class="highlight python"><code><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">DATABASES</span><span class="p">[</span><span class="s">'default'</span><span class="p">]</span> <span class="o">=</span>  <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">()</span>
+</code></pre>
+
+<p>Your <code class="prettyprint">local_settings.py</code> file will override this when you&rsquo;re working locally.</p>
+
+<p>To have database migrations automatically applied, amend your <code class="prettyprint">Procfile</code> to contain the following:</p>
+<pre class="highlight plaintext"><code>web: python manage.py migrate &amp;&amp; waitress-serve --port=$PORT PROJECTNAME.wsgi:application
+</code></pre>
+
+<p>Again, remember to replace <code class="prettyprint">PROJECTNAME</code> with the name of your WSGI module.</p>

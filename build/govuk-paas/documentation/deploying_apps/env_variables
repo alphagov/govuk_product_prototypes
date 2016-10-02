@@ -1,0 +1,44 @@
+<h2 id="environment-variables">Environment variables</h2>
+
+<p>All the configuration information for your app must be stored as environment variables, not in the code. </p>
+
+<p>This includes credentials for external services that your app uses, such as a Twitter account, as well as values that will vary with each deployment of the app, like the canonical URL.</p>
+
+<p>To view an app&rsquo;s current environment variables, run:</p>
+
+<p><code class="prettyprint">cf env APPNAME</code></p>
+
+<p>To create or update a variable, use:</p>
+
+<p><code class="prettyprint">cf set-env APPNAME ENV_VAR_NAME ENV_VAR_VALUE</code></p>
+
+<p>If you&rsquo;re deploying a pre-existing app that was written with 12-factor in mind, check the app&rsquo;s documentation for any environment variables you need to set.</p>
+
+<p>If the app has instructions to deploy to Heroku, and tells you to do something like:</p>
+
+<p><code class="prettyprint">heroku config:set VARIABLE=value</code></p>
+
+<p>then you should do the equivalent command with <code class="prettyprint">cf set-env</code>:</p>
+
+<p><code class="prettyprint">cf set-env APPNAME VARIABLE value</code></p>
+
+<h3 id="system-provided-environment-variables">System-provided environment variables</h3>
+
+<p>There are two system-provided environment variables which contain information in JSON format.</p>
+
+<ul>
+<li>VCAP_SERVICES contains details (including credentials) of any backing services bound to the app</li>
+<li>VCAP_APPLICATION provides details of the currently running application (for example, language runtime version)</li>
+</ul>
+
+<p>To see the values of the system-provided variables, use:</p>
+
+<p><code class="prettyprint">cf env APPNAME</code></p>
+
+<p>If your app connects to a backing service, you may need to have it parse VCAP_SERVICES to get the credentials and other settings relating to that service and set the appropriate environment variables.</p>
+
+<p>However, some buildpacks will do this for you automatically. See the deploy instructions for the language/framework you are using for details.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<p>For more information, see Cloud Foundry&rsquo;s <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html">Cloud Foundry Environment Variables</a> documentation.</p>

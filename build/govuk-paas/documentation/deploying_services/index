@@ -1,0 +1,23 @@
+<h1 id="deploying-backing-services">Deploying backing services</h1>
+
+<h2 id="services-overview">Services overview</h2>
+
+<p>Your application probably relies on backing services such as a database, an email delivery service or a monitoring system.</p>
+
+<p>In Cloud Foundry, backing services are referred to as &lsquo;services&rsquo; and are available through the Cloud Foundry <code class="prettyprint">cf marketplace</code> command.</p>
+
+<p>Currently, the only service available is the <a href="#using-a-postgresql-service">PostgreSQL database service</a>. </p>
+
+<h2 id="paid-services">Paid services</h2>
+
+<p>Some services (including <code class="prettyprint">postgres</code>) are considered paid services. Your organization may not have the ability to use paid services enabled. Access to paid services can either be enabled or disabled based on your <a href="#quotas">organisation quota</a>.</p>
+
+<p>If you try to create a service and receive an error stating &ldquo;service instance cannot be created because paid service plans are not allowed&rdquo;, please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>.</p>
+
+<h2 id="accessing-services">Accessing services</h2>
+
+<p>Your app can find out what backing services are available, and obtain credentials for the services, by parsing the VCAP_SERVICES <a href="#environment-variables">environment variable</a>.</p>
+
+<h2 id="future-services">Future services</h2>
+
+<p>We are going to add more services in future based on demand, including Elasticsearch and Redis. If you need a particular backing service that we don&rsquo;t yet support, please let us know at <a href="mailto:gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>.</p>

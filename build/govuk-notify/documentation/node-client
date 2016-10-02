@@ -1,0 +1,36 @@
+<h1 id="node-js-client">Node.js client</h1>
+
+<h2 id="installation">Installation</h2>
+<pre class="highlight shell"><code>npm install notifications-node-client
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">NotifyClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'notifications-node-client'</span><span class="p">).</span><span class="nx">NotifyClient</span><span class="p">,</span>
+
+<span class="nx">notifyClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NotifyClient</span><span class="p">(</span>
+  <span class="s2">"https://api.notifications.service.gov.uk"</span><span class="p">,</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NOTIFY_SERVICE_ID</span><span class="p">,</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NOTIFY_SECRET</span> <span class="c1">// API Key</span>
+<span class="p">);</span>
+</code></pre>
+
+<p>Generate an API key by logging in to
+<a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to
+the <em>API integration</em> page.</p>
+
+<p>You will also find your service ID on the <em>API integration</em> page.</p>
+
+<h2 id="send-a-message">Send a message</h2>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendEmail</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">emailAddress</span><span class="p">,</span> <span class="nx">personalisation</span><span class="p">);</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendSms</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">phoneNumber</span><span class="p">,</span> <span class="nx">personalisation</span><span class="p">);</span>
+</code></pre>
+
+<p>Find template_id by clicking API info for the template you want to send.</p>
+
+<h3 id="with-personalisation">With personalisation</h3>
+<pre class="highlight javascript"><code><span class="nx">notifyClient</span><span class="p">.</span><span class="nx">sendSms</span><span class="p">(</span><span class="nx">templateId</span><span class="p">,</span> <span class="nx">phoneNumber</span><span class="p">,</span> <span class="nx">personalisation</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Amala'</span><span class="p">,</span>
+    <span class="s1">'reference_number'</span><span class="p">:</span> <span class="s1">'300241'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre>

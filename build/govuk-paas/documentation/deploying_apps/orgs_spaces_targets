@@ -1,0 +1,29 @@
+<h2 id="orgs-spaces-and-targets">Orgs, spaces and targets</h2>
+
+<p>Your tenant account belongs to at least one <strong>organisation</strong> (&ldquo;org&rdquo; for short) within the PaaS. This typically represents the real-world organisation or department you work for. Your co-workers&rsquo; tenant accounts will belong to the same org. </p>
+
+<p>To list available orgs, run:</p>
+
+<p><code class="prettyprint">cf orgs</code></p>
+
+<p>To see details about an org, run:</p>
+
+<p><code class="prettyprint">cf org ORGNAME</code></p>
+
+<p>where ORGNAME is the name of the org.</p>
+
+<p>Each org is divided into one or more <strong>spaces</strong>, which are used to organise app development, deployment, and maintenance. For example, you could use separate spaces for development and production versions of your app.</p>
+
+<p>To see the spaces in your current org, run:</p>
+
+<p><code class="prettyprint">cf spaces</code></p>
+
+<p>To deploy an app, you need to specify a combination of an organisation and a space: this is called the <strong>target</strong>.</p>
+
+<p>Set the target with:</p>
+
+<p><code class="prettyprint">cf target -o ORGNAME -s SPACENAME</code></p>
+
+<p>Once you set the target, the Cloud Foundry client remembers it until you change it.</p>
+
+<p>See the Cloud Foundry documentation on <a href="https://docs.cloudfoundry.org/concepts/roles.html">Orgs, Spaces, Roles, and Permissions</a> for more details.</p>

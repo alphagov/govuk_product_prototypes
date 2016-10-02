@@ -1,0 +1,23 @@
+<fieldset class="form-group">
+  <legend class="heading-medium">What is your date of birth?</legend>
+  <div class="form-date">
+
+    <p>For example, 31 3 1980</p>
+
+    <div class="form-group form-group-day">
+      <label for="dob-day">Day</label>
+      <input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+    </div>
+
+    <div class="form-group form-group-month">
+      <label for="dob-month">Month</label>
+      <input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+    </div>
+
+    <div class="form-group form-group-year">
+      <label for="dob-year">Year</label>
+      <input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2014">
+    </div>
+
+  </div>
+</fieldset>

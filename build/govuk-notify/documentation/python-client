@@ -1,0 +1,324 @@
+<h1 id="python-client">Python client</h1>
+
+<h2 id="installation">Installation</h2>
+<pre class="highlight shell"><code>pip install git+https://github.com/alphagov/notifications-python-client.git
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">notifications_python_client.notifications</span> <span class="kn">import</span> <span class="n">NotificationsAPIClient</span>
+
+<span class="n">notifications_client</span> <span class="o">=</span> <span class="n">NotificationsAPIClient</span><span class="p">(</span>
+    <span class="s">"https://api.notifications.service.gov.uk"</span><span class="p">,</span>
+    <span class="n">service_id</span><span class="o">=</span><span class="n">service_id</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Generate an API key by logging in to
+<a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to
+the <strong>API integration</strong> page.</p>
+
+<p>You will find your service ID on the <strong>API integration</strong> page.</p>
+
+<h2 id="send-a-message">Send a message</h2>
+
+<p>Text message:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_sms_notification</span><span class="p">(</span>
+    <span class="n">mobile_number</span><span class="p">,</span>
+    <span class="n">template_id</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Email:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span>
+    <span class="n">email_address</span><span class="p">,</span>
+    <span class="n">template_id</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>Find <code class="prettyprint">template_id</code> by clicking <strong>API info</strong> for the template you want to send.</p>
+
+<p>If a template has placeholders, you need to provide their values in <code class="prettyprint">personalisation</code>,
+for example:</p>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">send_email_notification</span><span class="p">(</span>
+    <span class="n">email_address</span><span class="p">,</span>
+    <span class="n">template_id</span><span class="p">,</span>
+    <span class="n">personalisation</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'first_name'</span><span class="p">:</span> <span class="s">'Amala'</span><span class="p">,</span>
+        <span class="s">'reference_number'</span><span class="p">:</span> <span class="s">'300241'</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary></p>
+
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td>
+<pre>
+{
+  "data":{
+    "notification": {
+      "id":1
+    },
+    "body": "Dear Bill, your licence is due for renewal on 3 January 2016.",
+    "template_version": 1,
+    "subject": "Licence renewal"
+  }
+}
+</pre> 
+        </td>
+    </tr>
+    <tr>
+        <td>429
+        </td>
+        <td>
+<pre>
+{"result": "error",
+"message": "Exceeded send limits (50) for today"}
+</pre>
+        </td>
+    </tr>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{"result":"error",
+"message": "Can’t send to this recipient using a team-only API key"]} 
+</pre>
+        </td>
+    </tr>
+        </tr>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{"result":"error", 
+"message"="Can’t send to this recipient when service is in trial 
+mode - see https://www.notifications.service.gov.uk/trial-mode"]}
+</pre>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<p></details> </p>
+
+<h2 id="get-the-status-of-one-message">Get the status of one message</h2>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">get_notification_by_id</span><span class="p">(</span><span class="n">notification_id</span><span class="p">)</span>
+</code></pre>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary>
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td></p>
+
+<pre>
+{
+  "data": {
+    "notification": {
+      "status": "delivered",
+      "to": "07515 987 456",
+      "template": {
+        "id": "5e427b42-4e98-46f3-a047-32c4a87d26bb",
+        "name": "First template",
+        "template_type": "sms"
+      },
+      "created_at": "2016-04-26T15:29:36.891512+00:00",
+      "updated_at": "2016-04-26T15:29:38.724808+00:00",
+      "sent_at": "2016-04-26T15:29:37.230976+00:00",
+      "job": {
+        "id": "f9043884-acac-46db-b2ea-f08cd8ec6d67",
+        "original_file_name": "Test run"
+      },
+      "sent_at": "2016-04-26T15:29:37.230976+00:00",
+      "id": "f163deaf-2d3f-4ec6-98fc-f23fa511518f",
+      "content_char_count": 490,
+      "service": "5cf87313-fddd-4482-a2ea-48e37320efd1",
+      "reference": None,
+      "sent_by": "mmg",
+      "body": "Dear Bill, your licence is due for renewal on 3 January 2016."
+      "date": "3 January 2016"
+    }
+  }
+}
+</pre> 
+
+<p></td>
+    </tr>
+    <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;, 
+&quot;message&quot;: &quot;id: required field&quot;}<br>
+</pre>
+        </td>
+    </tr>
+        <tr>
+        <td>404
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: &quot;No result found&quot;}<br>
+</pre>
+        </td>
+    </tr></p>
+
+<p></tbody>
+</table></p>
+
+<p></details> </p>
+
+<h2 id="get-the-status-of-all-messages">Get the status of all messages</h2>
+<pre class="highlight python"><code><span class="n">notifications_client</span><span class="o">.</span><span class="n">get_all_notifications</span><span class="p">(</span><span class="n">template_type</span><span class="o">=</span><span class="s">"email"</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s">"sending"</span><span class="p">)</span>
+</code></pre>
+
+<p>Optional <code class="prettyprint">template_type</code> can be one of:</p>
+
+<ul>
+<li><code class="prettyprint">email</code></li>
+<li><code class="prettyprint">sms</code></li>
+</ul>
+
+<p>Optional <code class="prettyprint">status</code> can be one of:</p>
+
+<ul>
+<li><code class="prettyprint">sending</code></li>
+<li><code class="prettyprint">delivered</code></li>
+<li><code class="prettyprint">permanent-failure</code></li>
+<li><code class="prettyprint">temporary-failure</code></li>
+<li><code class="prettyprint">technical-failure</code></li>
+</ul>
+
+<p><details> 
+    <summary>
+        Response:
+    </summary>
+<table>
+  <thead>
+    <tr>
+        <td>Status
+        </td>
+        <td>Body
+        </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>201
+        </td>
+        <td>
+<pre>
+{&quot;notifications&quot;:
+  [{
+    &quot;status&quot;: &quot;delivered&quot;,
+    &quot;to&quot;: &quot;07515 987 456&quot;,
+    &quot;template&quot;: {
+      &quot;id&quot;: &quot;5e427b42-4e98-46f3-a047-32c4a87d26bb&quot;,
+      &quot;name&quot;: &quot;First template&quot;,
+      &quot;template_type&quot;: &quot;sms&quot;
+    },
+    &quot;job&quot;: {
+      &quot;id&quot;: &quot;5cc9d7ae-ceb7-4565-8345-4931d71f8c2e&quot;,
+      &quot;original_file_name&quot;: &quot;Test run&quot;
+    },
+    &quot;created_at&quot;: &quot;2016-04-26T15:30:49.968969+00:00&quot;,
+    &quot;updated_at&quot;: &quot;2016-04-26T15:30:50.853844+00:00&quot;,
+    &quot;sent_at&quot;: &quot;2016-04-26T15:30:50.383634+00:00&quot;,
+    &quot;id&quot;: &quot;04ae9bdc-92aa-4d6c-a0da-48587c03d4c7&quot;,
+    &quot;content_char_count&quot;: 446,
+    &quot;service&quot;: &quot;5cf87313-fddd-4482-a2ea-48e37320efd1&quot;,
+    &quot;reference&quot;: None,
+    &quot;sent_by&quot;: &quot;mmg&quot;
+    },
+    {
+    &quot;status&quot;: &quot;delivered&quot;,
+    &quot;to&quot;: &quot;07515 987 456&quot;,
+    &quot;template&quot;: {
+      &quot;id&quot;: &quot;5e427b42-4e98-46f3-a047-32c4a87d26bb&quot;,
+      &quot;name&quot;: &quot;First template&quot;,
+      &quot;template_type&quot;: &quot;sms&quot;
+    },
+    &quot;job&quot;: {
+      &quot;id&quot;: &quot;f9043884-acac-46db-b2ea-f08cd8ec6d67&quot;,
+      &quot;original_file_name&quot;: &quot;Test run&quot;
+    },
+    &quot;created_at&quot;: &quot;2016-04-26T15:29:36.891512+00:00&quot;,
+    &quot;updated_at&quot;: &quot;2016-04-26T15:29:38.724808+00:00&quot;,
+    &quot;sent_at&quot;: &quot;2016-04-26T15:29:37.230976+00:00&quot;,
+    &quot;id&quot;: &quot;f163deaf-2d3f-4ec6-98fc-f23fa511518f&quot;,
+    &quot;content_char_count&quot;: 490,
+    &quot;service&quot;: &quot;5cf87313-fddd-4482-a2ea-48e37320efd1&quot;,
+    &quot;reference&quot;: None,
+    &quot;sent_by&quot;: &quot;mmg&quot;
+    },
+    …
+  ],
+  &quot;links&quot;: {
+    &quot;last&quot;: &quot;/notifications?page=3&amp;template_type=sms&amp;status=delivered&quot;,
+    &quot;next&quot;: &quot;/notifications?page=2&amp;template_type=sms&amp;status=delivered&quot;
+  },
+  &quot;total&quot;: 162,
+  &quot;page_size&quot;: 50
+}
+</pre> 
+        </td>
+    </tr>
+    <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: {&quot;status&quot;: {&quot;0&quot;: {&quot;status&quot;: [&quot;Not a valid choice.&quot;&quot;]}}},}
+</pre>
+        </td>
+        <tr>
+        <td>400
+        </td>
+        <td>
+<pre>
+{&quot;result&quot;: &quot;error&quot;
+&quot;message&quot;: {&quot;template_type&quot;: {&quot;0&quot;: {&quot;template_type&quot;: [&quot;Not a valid choice.&quot;&quot;]}}},}
+</pre>
+        </td>
+    </tr>
+    </tr></p>
+
+<p></tbody>
+</table></p>
+
+<p></details> </p>

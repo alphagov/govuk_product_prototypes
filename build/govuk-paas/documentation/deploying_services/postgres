@@ -1,0 +1,137 @@
+<h2 id="using-a-postgresql-service">Using a PostgreSQL service</h2>
+
+<h3 id="creating-a-postgresql-service">Creating a PostgreSQL service</h3>
+
+<p>Government PaaS enables you to create a PostgreSQL database service (powered by Amazon Web Services) and bind it to your app. </p>
+
+<p>In Cloud Foundry, each service may have multiple plans available with different characteristics.</p>
+
+<p>Currently, Government PaaS offers a <code class="prettyprint">postgres</code> service which is available with two separate plans: </p>
+
+<ul>
+<li><code class="prettyprint">M-dedicated-9.5</code></li>
+<li><code class="prettyprint">M-HA-dedicated-9.5</code> (high availability, recommended for production)</li>
+</ul>
+
+<p>The number in the plan name (in this case, <code class="prettyprint">9.5</code>) is the PostgreSQL version.</p>
+
+<p><code class="prettyprint">postgres</code> is considered a paid service. Paid services may not be enabled on your account. If you try to create a service and receive an error stating &ldquo;service instance cannot be created because paid service plans are not allowed&rdquo;, please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>.</p>
+
+<p>To create a service and bind it to your app:</p>
+
+<ol>
+<li><p>From the command line, run:  </p>
+
+<p><code class="prettyprint">cf marketplace</code>  </p>
+
+<p>to see the available services.</p>
+
+<p>You will see output like this:</p>
+<pre class="highlight plaintext"><code>service     plans                                   description
+postgres    M-dedicated-9.5*, M-HA-dedicated-9.5*   AWS RDS PostgreSQL service
+</code></pre></li>
+<li><p>Run: </p>
+
+<p><code class="prettyprint">cf marketplace -s postgres</code></p>
+
+<p>to see details of the available plans.</p></li>
+<li><p>Run: </p>
+
+<p><code class="prettyprint">cf create-service SERVICE PLAN SERVICE_INSTANCE</code></p>
+
+<p>where SERVICE is the service you want, PLAN is the plan you want, and SERVICE_INSTANCE is a unique, descriptive name for this instance of the service; for example:</p>
+
+<p><code class="prettyprint">cf create-service postgres M-dedicated-9.5 my-pg-service</code></p>
+
+<p>Note that for a production service, we strongly recommend you select the high-availability plan (<code class="prettyprint">M-HA-dedicated-9.5</code>).</p>
+
+<p>Paid services may need to be enabled on your account; if you receive an error stating &ldquo;service instance cannot be created because paid service plans are not allowed&rdquo;, please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>.</p></li>
+<li><p>It may take some time (up to 25 minutes) for the service instance to be set up. To find out its status, run:  </p>
+
+<p><code class="prettyprint">cf service SERVICE_INSTANCE</code></p>
+
+<p>for example:</p>
+
+<p><code class="prettyprint">cf service my-pg-service</code></p></li>
+<li><p>Wait until the service status reported by the above command is &lsquo;create succeeded&rsquo;. Here is an example of the type of output you will see once the service is created:</p>
+<pre class="highlight plaintext"><code>Service instance: my-pg-service
+Service: postgres
+Bound apps:
+Tags:
+Plan: M-dedicated-9.5
+Description: AWS RDS PostgreSQL service
+Documentation url: https://aws.amazon.com/documentation/rds/
+Dashboard:
+
+Last Operation
+Status: create succeeded
+Message: DB Instance 'rdsbroker-9f053413-97a5-461f-aa41-fe6e29db323e' status is 'available'
+Started: 2016-08-23T15:34:41Z
+Updated: 2016-08-23T15:42:02Z
+</code></pre></li>
+<li><p>You can now bind the PostgreSQL service to your app. Run:
+<code class="prettyprint">cf bind-service APPLICATION SERVICE_INSTANCE</code></p>
+
+<p>where APPLICATION is the name of a deployed instance of your application (exactly as specified in your manifest or push command), for example:</p>
+
+<p><code class="prettyprint">cf bind-service my-app my-pg-service</code></p></li>
+<li><p>Your app is now able to access the PostgreSQL service. If the app was already running, you may need to restart the app to connect.</p></li>
+</ol>
+
+<h3 id="accessing-postgresql-from-your-app">Accessing PostgreSQL from your app</h3>
+
+<p>Your app must make a <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> connection to the PostgreSQL service. Most libraries use TLS by default.</p>
+
+<p>Your app will need to parse the <code class="prettyprint">VCAP_SERVICES</code> <a href="#environment-variables">environment variable</a> to get details of the PostgreSQL service (or use a library that does so).</p>
+
+<p>(Note that if your app is written in Ruby, the Cloud Foundry Ruby buildpack will automatically parse <code class="prettyprint">VCAP_SERVICES</code> and set DATABASE_URL to the first database found.)</p>
+
+<p>Use <code class="prettyprint">cf env APPNAME</code> to see the environment variables.</p>
+
+<p>You can check for database connection errors by viewing the recent logs with:</p>
+
+<p><code class="prettyprint">cf logs APPNAME --recent</code></p>
+
+<h3 id="postgresql-service-maintenance-times">PostgreSQL service maintenance times</h3>
+
+<p>The PaaS PostgreSQL service is currently provided by Amazon Web Services RDS. Each PostgreSQL service you create will have a randomly-assigned weekly 30 minute maintenance window, during which there may be brief downtime. (To minimise downtime, select the <code class="prettyprint">M-HA-dedicated-9.5</code> high availability plan). Minor version upgrades (for example from 9.4.1 to 9.4.2) will be applied during this window.</p>
+
+<p>For more details, see the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html">Amazon RDS Maintenance documentation</a> [external page].</p>
+
+<p>If you need to know the time of your maintenance window, please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>. Times will be from 22:00 to 06:00 UTC. We will add the ability to set the time of the maintenance window in a future version of Government PaaS.</p>
+
+<h3 id="postgresql-service-backup">PostgreSQL service backup</h3>
+
+<p>The data stored within any PostgreSQL service you create is backed up using the standard Amazon RDS backup system. </p>
+
+<p>Backups are taken nightly and data is retained for 7 days.</p>
+
+<p>If you need to restore data to an earlier state, we can restore to any point from 5 minutes to 7 days ago, with a resolution of one second. Data can be restored to a new PostgreSQL service instance running in parallel, or it can replace the existing service instance.</p>
+
+<p>Please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a> to arrange the restore process or if you need further information about the backup process. We will need approval from your organization manager if restoring will involve overwriting data.</p>
+
+<p>Note that data restore will not be available in the event of an RDS outage affecting the entire Amazon availability zone.</p>
+
+<p>For more details about how the RDS backup system works, see <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.BackingUpAndRestoringAmazonRDSInstances.html">Amazon&rsquo;s DB Instance Backups documentation</a> [external page].</p>
+
+<h3 id="high-availability-details">High availability details</h3>
+
+<p>We recommend you use the high availability plan (<code class="prettyprint">M-HA-dedicated-9.5</code>) for any production apps.</p>
+
+<p>When you use the high availability plan, Amazon RDS provides a hot standby service to use for failover in the event that the original service fails.</p>
+
+<p>The failover process means that Amazon RDS will automatically change the DNS record of the database instance to point to the standby instance. You should make sure that your app doesn&rsquo;t cache the database IP, and any DNS caching should be configured with a low time to live (TTL). Consult the documentation for the language/framework you are using to find out how to do this.</p>
+
+<p>During failover, there will be an outage period (from tens of seconds to a few minutes). </p>
+
+<p>See the <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover">Amazon RDS documentation on the failover process</a> for more details.</p>
+
+<p>If you wish to test how your app deals with a failover, we can trigger one for you. Please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a> to arrange this.</p>
+
+<h3 id="read-replicas">Read replicas</h3>
+
+<p>Amazon RDS has the capability to provide a read replica: a read-only copy of your PostgreSQL database. This can be useful for performance, availability or security reasons.</p>
+
+<p>See the <a href="https://aws.amazon.com/rds/details/read-replicas/">Amazon RD documentation on read replicas</a> to learn more.</p>
+
+<p>The Government PaaS doesn&rsquo;t currently support read replicas, but if you think you would find them useful, please contact us at <a href="gov-uk-paas-support@digital.cabinet-office.gov.uk">gov-uk-paas-support@digital.cabinet-office.gov.uk</a>, providing details of your use case.</p>

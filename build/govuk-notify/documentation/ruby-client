@@ -1,0 +1,143 @@
+<h1 id="ruby-client">Ruby client</h1>
+
+<p>API client for GOV.UK Notify written in Ruby.</p>
+
+<p><a href="https://badge.fury.io/rb/notifications-ruby-client"><img alt="Gem Version" src="https://badge.fury.io/rb/notifications-ruby-client.svg" /></a></p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Prior to usage an account must be created through the Notify admin console. This will allow access to the API credentials you application.</p>
+
+<p>You can then install the gem or require it in your application.</p>
+<pre class="highlight plaintext"><code>gem install 'notifications-ruby-client'
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'notifications/client'</span>
+<span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">service_id</span><span class="p">,</span> <span class="n">secret_id</span><span class="p">)</span>
+</code></pre>
+
+<p>you can also override api endpoint</p>
+<pre class="highlight ruby"><code><span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">service_id</span><span class="p">,</span> <span class="n">secret_id</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+<span class="n">client</span><span class="p">.</span><span class="nf">base_url</span> <span class="c1"># =&gt; Notifications::Client::PRODUCTION_BASE_URL</span>
+</code></pre>
+
+<p>Generate an API key by logging in to GOV.UK Notify <a href="https://www.notifications.service.gov.uk">GOV.UK Notify</a> and going to the API integration page.</p>
+
+<p>You will find your service ID on the API integration page.</p>
+
+<h3 id="send-a-message">Send a message</h3>
+
+<p>Text message:</p>
+<pre class="highlight ruby"><code><span class="n">sms</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">send_sms</span><span class="p">(</span><span class="ss">to: </span><span class="n">number</span><span class="p">,</span> 
+                      <span class="ss">template: </span><span class="n">template_id</span><span class="p">,</span>
+                      <span class="ss">personalisation: </span><span class="p">{</span>
+                      <span class="ss">name: </span><span class="s2">"name"</span><span class="p">,</span>
+                      <span class="ss">year: </span><span class="s2">"2016"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+</code></pre>
+
+<p>Email:
+&ldquo;`ruby
+email = client.send_email(to: number, template: template_id)</p>
+
+<p>sms = client.send_sms(
+  to: number,
+  template: template_id,
+  personalisation: {
+    name: &quot;name&rdquo;,
+    year: &ldquo;2016&rdquo;
+  }
+) # =&gt; Notifications::Client::ResponseNotification
+&ldquo;`</p>
+
+<p>Find <code class="prettyprint">template_id</code> by clicking <strong>API info</strong> for the template you want to send.</p>
+
+<p>If a template has placeholders, you need to provide their values in <code class="prettyprint">personalisation</code>. Otherwise do not pass in <code class="prettyprint">personalisation</code></p>
+
+<p>If successful the response is a <code class="prettyprint">Notifications::Client::ResponseNotification</code>, which has the notification id.
+Otherwise a Notifications::Client::RequestError is returned.</p>
+
+<h3 id="get-the-status-of-one-message">Get the status of one message</h3>
+<pre class="highlight ruby"><code><span class="n">notification</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">get_notification</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1"># =&gt; Notifications::Client::Notification</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">id</span>         <span class="c1"># =&gt; uuid for the notification</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">to</span>         <span class="c1"># =&gt; recipient email address or mobile number</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">status</span>     <span class="c1"># =&gt; status of the message "created|pending|sent|delivered|permanent-failure|temporary-failure" </span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">created_at</span> <span class="c1"># =&gt; Date time the message was created</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">api_key</span>    <span class="c1"># =&gt; uuid for the api key (not the actual api key)</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">billable_units</span> <span class="c1"># =&gt; units billable or nil for email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">subject</span>    <span class="c1"># =&gt; Subject of email or nil for sms</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">body</span>       <span class="c1"># =&gt; Body of message</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">job</span>        <span class="c1"># =&gt; job id if created by a csv or nil if message sent via api</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">notification_type</span> <span class="c1"># =&gt; sms | email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">service</span>    <span class="c1"># =&gt; uuid for service</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">sent_at</span>    <span class="c1"># =&gt; Date time the message is sent to the provider or nil if status = "created"</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">sent_by</span>    <span class="c1"># =&gt; Name of the provider that sent the message or nil if status = "created"</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">template</span>   <span class="c1"># =&gt; Hash containing template id, name, version, template type sms|email</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">template_version</span> <span class="c1"># Template version number</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">reference</span>  <span class="c1"># =&gt; reference of the email or nil for sms</span>
+<span class="n">notification</span><span class="p">.</span><span class="nf">updated_at</span> <span class="c1"># =&gt; Date time that the notification was last updated</span>
+</code></pre>
+
+<h3 id="get-the-status-of-all-messages">Get the status of all messages</h3>
+<pre class="highlight ruby"><code><span class="n">notifications</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">get_notifications</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">links</span> <span class="c1"># =&gt; {"last"=&gt;"/notifications?page=4", "next"=&gt;"/notifications?page=2"}</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">total</span> <span class="c1"># =&gt; 202</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">page_size</span> <span class="c1"># =&gt; 50</span>
+<span class="n">notifications</span><span class="p">.</span><span class="nf">collection</span> <span class="c1"># =&gt; [] (array of notification objects)</span>
+
+</code></pre>
+
+<p>Query parameters are also supported</p>
+<pre class="highlight ruby"><code><span class="n">client</span><span class="p">.</span><span class="nf">get_notifications</span><span class="p">(</span>
+  <span class="ss">page: </span><span class="mi">2</span><span class="p">,</span>
+  <span class="ss">limit_days: </span><span class="mi">3</span><span class="p">,</span>
+  <span class="ss">page_size: </span><span class="mi">20</span><span class="p">,</span>
+  <span class="ss">status: </span><span class="s2">"delivered"</span><span class="p">,</span>
+  <span class="ss">template_type: </span><span class="s2">"sms"</span>
+<span class="p">)</span>
+</code></pre>
+
+<h3 id="exceptions">Exceptions</h3>
+
+<p>Raised exceptions will contain error message and response status code</p>
+<pre class="highlight ruby"><code><span class="n">client</span> <span class="o">=</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">invalid</span><span class="p">,</span> <span class="n">invalid</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Notifications</span><span class="o">::</span><span class="no">Client</span><span class="o">::</span><span class="no">RequestError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+<span class="n">e</span><span class="p">.</span><span class="nf">code</span> <span class="c1"># =&gt; 403</span>
+<span class="n">e</span><span class="p">.</span><span class="nf">message</span> <span class="c1"># =&gt; Invalid credentials</span>
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <td> Code </td>
+      <td> Message </td>
+     </tr>
+  </thead>
+  <tbdoy>
+  <tr>
+    <td> 403 </td>
+    <td> {&quot;token&rdquo;=>[&ldquo;Invalid token: signature&rdquo;]} </td>
+  </tr>
+  <tr>
+    <td> 403 </td>
+    <td> {&ldquo;token&rdquo;=>[&ldquo;Invalid token: expired&rdquo;]} </td>
+  </tr>
+  <tr>
+    <td> 429 </td>
+    <td> Exceeded send limits (50) for today </td>
+  </tr>
+  <tr>
+    <td> 400 </td>
+    <td> Can’t send to this recipient using a team-only API key </td>
+  </tr>
+  <tr>
+    <td> 400 </td>
+    <td> Can’t send to this recipient when service is in trial 
+          mode - see https://www.notifications.service.gov.uk/trial-mode
+    </td>
+  </tr>
+  </tbody>
+</table>

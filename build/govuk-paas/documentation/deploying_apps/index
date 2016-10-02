@@ -1,0 +1,38 @@
+<h1 id="deploying-apps">Deploying apps</h1>
+
+<h2 id="deployment-overview">Deployment overview</h2>
+
+<p>The <code class="prettyprint">cf push</code> command is used both to create a new app and to push a new version of an existing one. The basic steps:</p>
+
+<ol>
+<li><p>Check out whatever version of the code you want to deploy from version control.</p>
+<pre class="highlight plaintext"><code>git checkout master
+</code></pre></li>
+<li><p>Target the appropriate organisation and space.</p>
+<pre class="highlight plaintext"><code>cf target -o SOMEORG -s SOMESPACE
+</code></pre></li>
+<li><p>Deploy the application by running:</p>
+<pre class="highlight plaintext"><code>cf push APPNAME
+</code></pre>
+
+<p>from the directory where you checked out the code.</p></li>
+</ol>
+
+<p>The app should now be live at <code class="prettyprint">https://APPNAME.cloudapps.digital</code>.</p>
+
+<p>There are many options available when you <code class="prettyprint">push</code> an app. You can optionally set them in a <code class="prettyprint">manifest.yml</code> file in the directory from which you are running the <code class="prettyprint">push</code> command. See the Cloud Foundry documentation on <a href="http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html">Deploying with Application Manifests</a> for details.</p>
+
+<p>For a production app, you should run at least two instances to ensure availability.</p>
+
+<p>After deployment, you can increase the running instances to two using:</p>
+
+<p><code class="prettyprint">cf scale APPNAME -i 2</code></p>
+
+<h2 id="caveats">Caveats</h2>
+
+<ul>
+<li>Your app should not write to local storage. Cloud Foundry local storage is ephemeral and can be deleted at any time.</li>
+<li>You may need to set environment variables for your app to work. All configuration information should be stored in environment variables, not in the code. </li>
+<li>Instances will be restarted if they <a href="#quotas">exceed memory limits</a>.</li>
+<li>Proper <a href="#logging">logging</a> might require special libraries/configuration for your app.</li>
+</ul>
