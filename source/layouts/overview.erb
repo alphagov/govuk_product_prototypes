@@ -44,7 +44,10 @@
     </main>
     <% end %>
 
-    <%= partial("includes/footer") %>
+
+    <%= partial("includes/footer", :locals => {
+      :primary_nav        => current_page.data.primary_nav
+    }) %>
 
   </body>
 </html>

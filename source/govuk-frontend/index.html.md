@@ -2,6 +2,7 @@
 layout: overview
 product: Frontend
 primary_nav: frontend
+phase: beta
 section: about
 title: GOV.UK Frontend
 ---

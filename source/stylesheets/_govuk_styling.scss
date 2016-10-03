@@ -3,8 +3,8 @@
 @import 'govuk_styles/patterns/product-page';
 
 
-// Adjust grid to accomodate 'Platform as a Service' product name
-.govuk-paas #global-header.with-proposition .header-wrapper {
+// Adjust grid
+#global-header.with-proposition .header-wrapper {
 	.header-global{ width: 50% }
 	.header-proposition{ width: 50% }
 }
@@ -26,6 +26,7 @@
 	.phase-tag{
 		font-size: 14px;
 	    vertical-align: middle;
+	    background: #005EA5;
 	}
 }
 
@@ -431,3 +432,9 @@ input:focus {
 }
 
 
+.product-list{
+	margin-bottom: 30px;
+	li{
+		width: 33.33%;
+	}
+}

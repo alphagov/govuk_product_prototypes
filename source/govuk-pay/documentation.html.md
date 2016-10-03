@@ -2,6 +2,7 @@
 layout: techdoc
 product: Pay
 primary_nav: pay
+phase: beta
 section: documentation
 title: Documentation
 

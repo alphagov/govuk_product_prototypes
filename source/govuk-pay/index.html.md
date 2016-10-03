@@ -2,6 +2,7 @@
 layout: overview
 product: Pay
 primary_nav: pay
+phase: beta
 section: about
 title: GOV.UK Pay
 ---
