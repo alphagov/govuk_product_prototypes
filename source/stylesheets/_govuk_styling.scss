@@ -3,14 +3,15 @@
 @import 'govuk_styles/patterns/product-page';
 
 
+
+#wrapper{
+    min-height: 500px;
+}
+
 // Adjust grid
 #global-header.with-proposition .header-wrapper {
 	.header-global{ width: 50% }
 	.header-proposition{ width: 50% }
-}
-
-#wrapper{
-    min-height: 500px;
 }
 
 // Product name
@@ -437,4 +438,8 @@ input:focus {
 	li{
 		width: 33.33%;
 	}
+}
+
+.browse-list-item{
+	list-style-type: none;
 }

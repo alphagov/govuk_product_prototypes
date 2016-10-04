@@ -5,6 +5,9 @@ primary_nav: digital-marketplace
 phase: beta
 section: about
 title: GOV.UK Digital Marketplace
+
+includes:
+    - documentation/overview
 ---
 
 <div class="product-style">
@@ -25,9 +28,3 @@ title: GOV.UK Digital Marketplace
     </div>
   </div>
 </div>
-
-<main id="content" class="content" role="main">
-
-
-
-</main>
