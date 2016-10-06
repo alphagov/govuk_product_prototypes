@@ -40,6 +40,8 @@ under the License.
 
   <body class="<%= page_classes %> techdoc" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
 
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
     <div class="header-fixed-position header-full-width">
     <%= partial("includes/header", :locals => { 
       :product      => current_page.data.product,

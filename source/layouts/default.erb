@@ -26,6 +26,8 @@
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
 
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
     <%= partial("includes/header", :locals => { 
       :product      => current_page.data.product,
       :primary_nav  => current_page.data.primary_nav,
