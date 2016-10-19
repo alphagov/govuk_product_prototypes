@@ -12,6 +12,7 @@ Prototypes of information and documentation pages for products delivered by the 
 
 ## Product page prototypes
 
+* [GOV.UK Service Manual](service-manual/index.html)
 * [GOV.UK Pay](govuk-pay/index.html)
 * [GOV.UK Notify](govuk-notify/index.html)
 * [GOV.UK Platform as a Service](govuk-paas/index.html)

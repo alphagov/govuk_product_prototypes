@@ -444,3 +444,37 @@ input:focus {
 .browse-list-item{
 	list-style-type: none;
 }
+
+// search box
+
+.in-manual-search {
+   position: relative;
+ }
+
+ .in-manual-search label {
+   padding-bottom: 5px;
+}
+
+.in-manual-search #search-box {
+   width: 90%;
+   border: none;
+   padding: 6px;
+}
+
+.in-manual-search button {
+   width: 40px;
+   height: 40px;
+   border: 1px solid #0b0c0c ;
+   border-width: 0 0 0 1px;
+   border-left-color: #222;
+   overflow: hidden;
+   text-indent: -5000px;
+   cursor: pointer;
+   color: #fff;
+   background: #0b0c0c url(https://assets.publishing.service.gov.uk/manuals-frontend/search-button-de28edec94868c92285a8f97a79bb469.png) 
+   no-repeat 0 50%;
+   position: absolute;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   border-radius: 0;
+}
