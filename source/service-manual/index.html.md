@@ -32,6 +32,8 @@ title: Service Manual
 
 <main id="content" role="main">
 
+<!--
+
 <div class="grid-row">
   <div class="column-one-half">
     <h2 class="heading-medium" id="manual-nav">
@@ -48,6 +50,8 @@ title: Service Manual
   </div>
 
 </div>
+
+-->
 
 <!-- Top: just products
 
@@ -162,17 +166,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Agile delivery</a></h4>
-      <p>What key performance indicators to measure and how, includes getting on the Performance Platform.</p>
+      <p>What it it, why it works and how to do it</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Funding and procurement</a></h4>
+      <h4 class="heading-small"><a href="#">Funding and buying</a></h4>
       <p>How to get money, buy things and use the Digital Marketplace</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Helping people to use your service</a></h4>
-      <p>How to make your service accessible, provide assisted digital support and increase digital take-up.</p>
+      <p>How to make your service accessible and increase digital take-up</p>
     </div>
 
 </div>
@@ -183,17 +187,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Measuring success</a></h4>
-      <p>What key performance indicators to measure and how, includes getting on the Performance Platform.</p>
+      <p>Data you need to measure and monitor services</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Service assessments</a></h4>
-      <p>How assessments work, which services need them and evidence you'll need to pass.</p>
+      <p>How assessments work and who needs them</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Design</a></h4>
-      <p>How to turn user research into simple, clear services, including resources for designers and content designers.</p>
+      <p>Designing services, including using patterns and prototypes</p>
     </div>
 
 </div>
@@ -204,17 +208,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">The team</a></h4>
-      <p>Agile methods and tools explained, including what assurance and reporting to use.</p>
+      <p>Who you'll need to design and build a successful service</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Technology</a></h4>
-      <p>How to build or buy systems and software that are secure, sustainable and cost-effective.</p>
+      <p>How to build or buy secure systems that meet users needs</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">User research</a></h4>
-      <p>How to turn user research into simple, clear services, including resources for designers and content designers.</p>
+      <p>What user researchers do and what to look for</p>
     </div>
 
 </div>
@@ -226,13 +230,13 @@ Bottom: just products -->
 <div class="grid-row" id="standard">
 
     <div class="column-one-half">
-      <h2 class="heading-medium">The Digital Service Standard</h2>
-      <p>The <a href="#">Digital Service Standard</a> provides the principles of building a good digital service. This manual explains what teams can do to build great digital services that will meet the standard.</p>
+      <h2 class="heading-medium"><a href="#">Digital Service Standard</a></h2>
+      <p>The Digital Service Standard is a set of 18 criteria to help you create and run good digital services
     </div>
 
     <div class="column-one-half">
-      <h2 class="heading-medium">Communities</h2>
-      <p>You can view the <a href="#">communities</a> to find more learning resources, see who has written the guidance in the manual and connect with digital people like you from across government.</p>
+      <h2 class="heading-medium"><a href="https://www.gov.uk/service-manual/communities">Communities</a></h2>
+      <p>Connect with practitioners across government: discussions, blogs and resources.</p>
     </div>
 
 </div>
@@ -254,17 +258,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Notify</a></h4>
-      <p>Send secure text messages, emails or letters to people who use your service.</p>
+      <p>Send secure text messages, emails or letters to users</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Pay</a></h4>
-      <p>Make it simple for people who use your online service to pay you</p>
+      <p>Make it simple to make payments online</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Verify</a></h4>
-      <p>The new way for people to prove who they are online.</p>
+      <p>Let users prove their identity online</p>
     </div>
 
 </div>
@@ -275,12 +279,12 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Cloud hosting</a></h4>
-      <p>Quickly, simply deploy your service on a government hosted platform.</p>
+      <p>Quickly, simply deploy your service on a government hosted platform</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Login</a></h4>
-      <p>Simple and secure access to GOV.UK products and admin tools for public servants</p>
+      <p>Access to GOV.UK products and tools for public servants</p>
     </div>
 
 </div>
@@ -300,17 +304,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Registers</a></h4>
-      <p>Get front-end tools to help write secure, efficient and maintainable code</p>
+      <p>Registers are lists of information for building services</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Find government data</a></h4>
-      <p>Use government data to learn how government works, hold it to account, carry out research or build APIs and services</p>
+      <h4 class="heading-small"><a href="#">Find data</a></h4>
+      <p>Use government data to carry out research or build APIs and services</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Performance Platform</a></h4>
-      <p>Find performance data of government servicess</p>
+      <h4 class="heading-small"><a href="#">Service data</a></h4>
+      <p>Check how government services are performing</p>
     </div>
 
 </div>
@@ -330,17 +334,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Frontend</a></h4>
-      <p>Get front-end tools to help write secure, efficient and maintainable code</p>
+      <p>Build accessible, responsive web interfaces for government</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Prototype Kit</a></h4>
-      <p>The GOV.UK Prototype Kit from GDS helps you make HTML prototypes for user research</p>
+      <p>Make HTML prototypes for user research and service design</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">GOV.UK Patterns</a></h4>
-      <p>Reuable code and standards to solve common problems</p>
+      <p>Reusable code and standards to solve common problems</p>
     </div>
 
 </div>
@@ -365,12 +369,12 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Webchat</a></h4>
-      <p>Let advisors talk to users with online messages</p>
+      <p>Let advisors talk to users through online messages</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Staff computers</a></h4>
-      <p>Laptops and computers for public servant to do their jobs</p>
+      <p>Get laptops and computers for your staff</p>
     </div>
 
 </div>
@@ -379,7 +383,7 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Wi-Fi</a></h4>
-      <p>Simpler and secure access to the internet in public buildings</p>
+      <p>Simple and secure access to the internet in public buildings</p>
     </div>
 
     <div class="column-one-third">
@@ -404,7 +408,7 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Publish on GOV.UK</a></h4>
-      <p>Permission and tools to publish information on GOV.UK</p>
+      <p>Permission and tools to publish content on GOV.UK</p>
     </div>
 
     <div class="column-one-third">
@@ -423,7 +427,7 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Publish data</a></h4>
-      <p>Publish and manage government data for transparency, research or to build applications and services.</p>
+      <p>Data for transparency, research or to build applications and services</p>
     </div>
 
     <div class="column-one-third">
@@ -453,151 +457,17 @@ Bottom: just products -->
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Service manager training</a></h4>
-      <p>6-day induction programme aims to give service managers the basic knowledge, network of colleagues and confidence to take the lead in transforming digital services.</p>
+      <p>
+       How to lead service teams and projects</p>
     </div>
 
     <div class="column-one-third">
       <h4 class="heading-small"><a href="#">Design training</a></h4>
-      <p>Free, 3-day training on the role of design in government, how designers work and skills used when building government services.</p>
+      <p>Design in government, how designers work and prototyping</p>
     </div>
 
 </div>
 
 <!-- Bottom: Training -->
-
-<!-- Top: Communities -->
-
-<div class="grid-row" id="communities">
-  <div class="column-one-third">
-    <h2 class="heading-medium">Communities</h2>
-  </div>
-</div>
-
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Advice and assurance</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Accessibility</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Back end development</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Business analysis</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Business management</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Content</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Data analysis</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Delivery management</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Design</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Digital engagement</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Frontend development</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Information assurance</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Infrastructure and networks</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">People support</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Policy and department engagement</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Product and service management</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Service desk</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Standards and assurance</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Technical architecture</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Transformation</a></h4>
-    </div>
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">User research</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Web operations</a></h4>
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-</div>
-
-<!-- Bottom: Communities -->
 
 </main>
