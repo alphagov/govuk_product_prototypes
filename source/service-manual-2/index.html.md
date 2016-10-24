@@ -12,7 +12,7 @@ title: Service Manual
     <div class="grid-row">
       <div class="column-two-thirds" style="width: 70%;">
 
-        <h1 class="heading-xlarge">Design, build and run public services in the internet age</h1>
+        <h1 class="heading-xlarge">Design, build and run public services in the internet era</h1>
 
       </div>
 
@@ -47,6 +47,38 @@ title: Service Manual
 <div class="grid-row">
 
     <div class="column-one-third">
+      <h2 class="heading-medium">Products to build and run services</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="/govuk-notify/index.html">GOV.UK Notify</a></h4>
+      <h4 class="heading-small"><a href="/govuk-notify/index.html">GOV.UK Pay</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Verify</a></h4>
+      <h4 class="heading-small"><a href="/govuk-paas/index.html">GOV.UK Cloud hosting</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Single Sign On</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Service design</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">GOV.UK Frontend</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Prototype Kit</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Patterns</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
       <h2 class="heading-medium">Guidance for service teams</h2>
     </div>
 
@@ -70,23 +102,6 @@ title: Service Manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h2 class="heading-medium">Products to build and run services</h2>
-    </div>
-
-    <div class="column-one-third">
-      <br>
-      <h4 class="heading-small"><a href="#">GOV.UK Notify</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Pay</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Verify</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Cloud hosting</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Login</a></h4>
-    </div>
-    
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
       <h2 class="heading-medium">Data to build and run services</h2>
     </div>
 
@@ -95,21 +110,6 @@ title: Service Manual
       <h4 class="heading-small"><a href="#">Registers</a></h4>
       <h4 class="heading-small"><a href="#">Find data</a></h4>
       <h4 class="heading-small"><a href="#">Service data</a></h4>
-    </div>
-    
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      <h2 class="heading-medium">Service design</h2>
-    </div>
-
-    <div class="column-one-third">
-      <br>
-      <h4 class="heading-small"><a href="#">GOV.UK Frontend</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Prototype Kit</a></h4>
-      <h4 class="heading-small"><a href="#">GOV.UK Patterns</a></h4>
     </div>
     
 </div>
