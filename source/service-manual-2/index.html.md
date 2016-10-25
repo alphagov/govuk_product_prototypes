@@ -39,14 +39,6 @@ title: Service Manual
 <div class="grid-row">
 
     <div class="column-one-third">
-
-    </div>
-
-</div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
       <h2 class="heading-medium">Products to build and run services</h2>
     </div>
 

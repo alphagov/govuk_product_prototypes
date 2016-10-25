@@ -283,7 +283,7 @@ Bottom: just products -->
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">GOV.UK Login</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Single Sign On</a></h4>
       <p>Access to GOV.UK products and tools for public servants</p>
     </div>
 
@@ -298,7 +298,6 @@ Bottom: just products -->
     <h2 class="heading-medium">Data to build and run services</h2>
   </div>
 </div>
-
 
 <div class="grid-row">
 
