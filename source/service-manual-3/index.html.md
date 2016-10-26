@@ -12,15 +12,15 @@ title: Service Manual
     <div class="grid-row">
       <div class="column-two-thirds" style="width: 75%;">
 
-        <h1 class="heading-xlarge" style="font-size: 43px">Design and build public services</h1>
+        <h1 class="heading-xlarge" style="font-size: 72px; margin-top: 18px; margin-bottom: 36px;">Design and build public services</h1>
 
       </div>
 
       <div class="column-two-thirds">
         <div class="in-manual-search-blue">
-          <form action="/search">
+          <form action="search.html">
                  <input type="hidden" name="filter_manual[]" value="/guidance/content-design">
-                 <input id="search-box" type="text" name="q" placeholder="Search Service Manual">
+                 <input id="search-box" type="text" name="question" placeholder="Search Service Manual">
                  <button type="submit" style="">search</button>
           </form>
         </div>
@@ -41,7 +41,7 @@ title: Service Manual
     <div class="column-one-half">
 
       <h2 class="heading-medium"><a href="guidance.html">Guidance for service teams</a></h2>
-      <p>Inludes Digital Service Standard, service assessments, gudiance on agile, technology, design, user research</p>
+      <p>Inludes service assessments, gudiance on agile, technology, design, user research, offline support</p>
 
       <h2 class="heading-medium"><a href="design.html">Service design</a></h2>
       <p>Patterns, GOV.UK Fontend, prototype kit, design principes and how to design services</p>
@@ -64,6 +64,9 @@ title: Service Manual
 
       <h2 class="heading-medium"><a href="publishing.html">Publishing</a></h2>
       <p>Publishing on GOV.UK, campaign sites, blogs, style guides and publishing data</p>
+
+      <h2 class="heading-medium"><a href="#">Digital Service Standard</a></h2>
+      <p>The Digital Service Standard is a set of 18 criteria to help you create and run good digital services</p>
       
     </div>
     

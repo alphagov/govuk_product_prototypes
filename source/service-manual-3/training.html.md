@@ -39,7 +39,7 @@ title: Service Manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Digital induction</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/the-team/design-training">Digital induction</a></h4>
       <p>Introduction to the internet and how it works in government</p>
     </div>
 

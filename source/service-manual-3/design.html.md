@@ -49,7 +49,7 @@ title: Service Manual
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">GOV.UK Patterns</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns">GOV.UK Patterns</a></h4>
       <p>Reusable code and standards to solve common problems</p>
     </div>
 
@@ -63,8 +63,8 @@ title: Service Manual
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Design principles</a></h4>
-      <p>Reusable code and standards to solve common problems</p>
+      <h4 class="heading-small"><a href="https://www.gov.uk/design-principles">Design principles</a></h4>
+      <p>Help to guide decisions in your service or organisation</p>
     </div>
 
 </div>

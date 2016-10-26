@@ -105,11 +105,6 @@ title: Service Manual
 <div class="grid-row" id="standard">
 
     <div class="column-one-half">
-      <h2 class="heading-medium"><a href="#">Digital Service Standard</a></h2>
-      <p>The Digital Service Standard is a set of 18 criteria to help you create and run good digital services
-    </div>
-
-    <div class="column-one-half">
       <h2 class="heading-medium"><a href="https://www.gov.uk/service-manual/communities">Communities</a></h2>
       <p>Connect with practitioners across government: discussions, blogs and resources.</p>
     </div>

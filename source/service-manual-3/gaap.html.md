@@ -51,7 +51,7 @@ title: Service Manual
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">GOV.UK Verify</a></h4>
+      <h4 class="heading-small"><a href="/https://www.gov.uk/government/publications/introducing-govuk-verify/introducing-govuk-verify">GOV.UK Verify</a></h4>
       <p>Let users prove their identity online</p>
     </div>
 
@@ -67,7 +67,7 @@ title: Service Manual
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">GOV.UK Single Sign On</a></h4>
+      <h4 class="heading-small"><a href="https://governmentasaplatform.blog.gov.uk/2016/08/16/discovery-of-two-parts/">GOV.UK Single Sign On</a></h4>
       <p>Access to GOV.UK products and tools for public servants</p>
     </div>
 

@@ -13,10 +13,11 @@ title: Service Manual
 
       <div class="column-two-thirds">
         <div class="in-manual-search-blue">
-          <form action="/search">
+          <form action="/search" method="get">
+
                  <input type="hidden" name="filter_manual[]" value="/guidance/content-design">
                  <input id="search-box" type="text" name="q" placeholder="Search Service Manual">
-                 <button type="submit" style="">search</button>
+                 <button type="submit">search</button>
           </form>
         </div>
       </div>
@@ -42,7 +43,7 @@ title: Service Manual
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Webchat</a></h4>
+      <h4 class="heading-small"><a href="https://governmentasaplatform.blog.gov.uk/category/webchat/">Webchat</a></h4>
       <p>Let advisors talk to users through online messages</p>
     </div>
 

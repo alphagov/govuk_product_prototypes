@@ -39,17 +39,17 @@ title: Service Manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Registers</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/government/publications/registers/registers">Registers</a></h4>
       <p>Registers are lists of information for building services</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Find data</a></h4>
+      <h4 class="heading-small"><a href="https://data.gov.uk/">Find data</a></h4>
       <p>Use government data to carry out research or build APIs and services</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Service data</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/performance">Service data</a></h4>
       <p>Check how government services are performing</p>
     </div>
 
