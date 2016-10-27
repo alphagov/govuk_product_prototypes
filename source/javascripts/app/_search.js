@@ -73,3 +73,25 @@
     content.unhighlight(highlightOpts);
   }
 })();
+
+// Question for questions/eligibility/index.html
+router.get('/questions/eligibility/right_to_work_in_uk', function (req, res) {
+
+  console.log("over18");
+
+  // get the answer from the query string (eg. ?over18="yes")
+  var over18 = req.query.over18;
+
+  if (over18 == "service design" ){
+
+    // if users is NOT 18 or over
+    res.redirect("gaap.html" + res.locals.formQuery);
+
+  } else {
+
+    // if users IS 18 or over
+    res.render('questions/eligibility/right_to_work_in_uk/index.html');
+
+  }
+
+});

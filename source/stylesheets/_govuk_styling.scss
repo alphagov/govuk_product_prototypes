@@ -445,3 +445,123 @@ input:focus {
 .browse-list-item{
 	list-style-type: none;
 }
+
+// search box
+
+.in-manual-search {
+   position: relative;
+ }
+
+ .in-manual-search label {
+   padding-bottom: 5px;
+}
+
+.in-manual-search #search-box {
+   width: 90%;
+   border: none;
+   padding: 6px;
+}
+
+.in-manual-search button {
+   width: 40px;
+   height: 40px;
+   border: 1px solid #0b0c0c ;
+   border-width: 0 0 0 1px;
+   border-left-color: #222;
+   overflow: hidden;
+   text-indent: -5000px;
+   cursor: pointer;
+   color: #fff;
+   background: #0b0c0c url(https://assets.publishing.service.gov.uk/manuals-frontend/search-button-de28edec94868c92285a8f97a79bb469.png) 
+   no-repeat 0 50%;
+   position: absolute;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   border-radius: 0;
+}
+
+// search box
+
+.in-manual-search-blue {
+   position: relative;
+ }
+
+ .in-manual-search-blue label {
+   padding-bottom: 5px;
+}
+
+.in-manual-search-blue #search-box {
+   width: 90%;
+   border: none;
+   padding: 6px;
+}
+
+.in-manual-search-blue button {
+   width: 39px;
+   height: 39px;
+   border: 1px solid #0b0c0c ;
+   border-width: 0 0 0 1px;
+   border-left-color: #222;
+   overflow: hidden;
+   text-indent: -5000px;
+   cursor: pointer;
+   color: #fff;
+   background: #005EA5 url(https://assets.publishing.service.gov.uk/manuals-frontend/search-button-de28edec94868c92285a8f97a79bb469.png) 
+   no-repeat 0 50%;
+   position: absolute;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   border-radius: 0;
+}
+
+#manual-nav a:link {
+    text-decoration: none;
+}
+
+input, select, textarea{
+    color: #0b0c0c;
+}
+
+// search box
+
+.in-manual-search-plain {
+   position: relative;
+ }
+
+ .in-manual-search-plain label {
+   padding-bottom: 5px;
+}
+
+.in-manual-search-plain #search-box {
+   width: 90%;
+   border: none;
+   padding: 6px;
+   border: 2px solid $grey-1;
+}
+
+.in-manual-search-plain button {
+   width: 40px;
+   height: 40px;
+   border: 1px solid #0b0c0c ;
+   border-width: 0 0 0 1px;
+   border-left-color: #222;
+   overflow: hidden;
+   text-indent: -5000px;
+   cursor: pointer;
+   color: #fff;
+   background: #0b0c0c url(https://assets.publishing.service.gov.uk/manuals-frontend/search-button-de28edec94868c92285a8f97a79bb469.png) 
+   no-repeat 0 50%;
+   position: absolute;
+   -webkit-border-radius: 0;
+   -moz-border-radius: 0;
+   border-radius: 0;
+}
+
+#search-label {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+#search-results div h2 {
+	color: #0b0c0c;
+}
