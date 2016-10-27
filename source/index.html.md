@@ -31,3 +31,9 @@ Prototypes of information and documentation pages for products delivered by the 
 * [Digital Marketplace](https://www.digitalmarketplace.service.gov.uk/)
 * [GOV.UK Elements](http://govuk-elements.herokuapp.com/)
 * [GOV.UK Prototype Kit](https://github.com/alphagov/govuk_prototype_kit)
+
+## Service manual
+
+* [option 1](service-manual/index.html)
+* [option 2](service-manual-2/index.html)
+* [option 3](service-manual-3/index.html)
