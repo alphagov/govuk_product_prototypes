@@ -2,6 +2,7 @@
 @import 'govuk_styles/patterns/tabs';
 @import 'govuk_styles/patterns/search-in-header';
 @import 'govuk_styles/patterns/product-page';
+@import 'govuk_styles/patterns/organisation-logo';
 
 
 
@@ -10,7 +11,7 @@
 }
 
 // Adjust grid
-#global-header.with-proposition .header-wrapper {
+#global-header.with-proposition .header-wrapper.govuk-product {
 	.header-global{ width: 50% }
 	.header-proposition{ width: 50% }
 }

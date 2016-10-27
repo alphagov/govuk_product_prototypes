@@ -98,13 +98,16 @@
 
   <body class="govuk-notify govuk-notify_feedback" data-languages="[]">
 
-    <header role="banner" id="global-header" class="with-proposition">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+<header role="banner" id="global-header" class="with-proposition">
   <div class="header-wrapper">
     <div class="header-global">
       <div class="header-logo">
         <a href="index.html" id="logo" class="content">
           <img src="{{ asset_path }}images/gov.uk_logotype_crown_invert_trans.png?0.17.3" width="35" height="31" alt=""> GOV.UK <span class="product-name">Notify</span>
-          <span class="phase-banner-beta"><strong class="phase-tag">BETA</strong></span>
+          <span class="phase-banner-beta"><strong class="phase-tag">beta</strong></span>
         </a>
       </div>
     </div>
