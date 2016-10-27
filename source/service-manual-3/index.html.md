@@ -10,9 +10,9 @@ title: Service Manual
 <div class="product-style" style="padding-bottom: 0px; background: #0B0C0C;">
   <div id="content" style="padding-bottom: 36px;">
     <div class="grid-row">
-      <div class="column-two-thirds" style="width: 75%;">
+      <div class="column-two-thirds">
 
-        <h1 class="heading-xlarge" style="font-size: 72px; margin-top: 18px; margin-bottom: 36px;">Design and build public services</h1>
+        <h1 class="heading-xlarge" style="font-size: 72px; margin-top: 18px; margin-bottom: 48px;">Design and build public services</h1>
 
       </div>
 
@@ -41,7 +41,7 @@ title: Service Manual
     <div class="column-one-half">
 
       <h2 class="heading-medium"><a href="guidance.html">Guidance for service teams</a></h2>
-      <p>Inludes service assessments, gudiance on agile, technology, design, user research, offline support</p>
+      <p>Inludes service assessments, gudiance on agile, technology, design, user research, accessibility</p>
 
       <h2 class="heading-medium"><a href="design.html">Service design</a></h2>
       <p>Patterns, GOV.UK Fontend, prototype kit, design principes and how to design services</p>
