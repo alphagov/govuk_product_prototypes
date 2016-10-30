@@ -20,7 +20,7 @@ title: Service Manual
         <div class="in-manual-search-blue">
           <form action="search.html">
                  <input type="hidden" name="filter_manual[]" value="/guidance/content-design">
-                 <input id="search-box" type="text" name="question" placeholder="Search Service Manual">
+                 <input id="search-box" type="text" name="question" placeholder="Search the Service Manual">
                  <button type="submit" style="">search</button>
           </form>
         </div>
@@ -41,10 +41,10 @@ title: Service Manual
     <div class="column-one-half">
 
       <h2 class="heading-medium"><a href="guidance.html">Guidance for service teams</a></h2>
-      <p>Inludes service assessments, gudiance on agile, technology, design, user research, accessibility</p>
+      <p>Guidance on service assessments, agile, technology, design, user research, accessibility and more</p>
 
       <h2 class="heading-medium"><a href="design.html">Service design</a></h2>
-      <p>Patterns, GOV.UK Fontend, prototype kit, design principes and how to design services</p>
+      <p>Principles, patterns, styles and tools for designing public services.</p>
 
       <h2 class="heading-medium"><a href="technology.html">Find technology and people</a></h2>
       <p>Includes Digital Marketplace, webchat, staff computers, Wi-Fi, printing and secure email</p>

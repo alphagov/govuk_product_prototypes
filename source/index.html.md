@@ -20,6 +20,13 @@ Prototypes of information and documentation pages for products delivered by the 
 * [GOV.UK Digital Marketplace](digital-marketplace/index.html)
 
 
+## Service Manual
+
+* [Option 1](service-manual/index.html)
+* [Option 2](service-manual-2/index.html)
+* [Option 3](service-manual-3/index.html)
+
+
 ## Existing product pages
 
 * [GOV.UK Pay guide](https://www.gov.uk/government/publications/govuk-pay/govuk-pay)
@@ -32,8 +39,3 @@ Prototypes of information and documentation pages for products delivered by the 
 * [GOV.UK Elements](http://govuk-elements.herokuapp.com/)
 * [GOV.UK Prototype Kit](https://github.com/alphagov/govuk_prototype_kit)
 
-## Service manual
-
-* [option 1](service-manual/index.html)
-* [option 2](service-manual-2/index.html)
-* [option 3](service-manual-3/index.html)

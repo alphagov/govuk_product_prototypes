@@ -5,6 +5,9 @@
 @import 'govuk_styles/patterns/organisation-logo';
 
 
+::-webkit-input-placeholder{
+	color: $text-colour;
+}
 
 #wrapper{
     min-height: 500px;
