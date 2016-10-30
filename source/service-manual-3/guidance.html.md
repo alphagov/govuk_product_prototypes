@@ -1,29 +1,6 @@
 ---
-layout: overview
-product: Service Manual
-primary_nav: service_manual
-phase: beta
-section: about
-title: Service Manual
+layout: service_manual
 ---
-
-<div class="product-style" style="padding-bottom: 0px; background: #0B0C0C;">
-  <div id="content" style="padding-bottom: 36px;">
-    <div class="grid-row">
-
-      <div class="column-two-thirds">
-        <div class="in-manual-search-blue">
-          <form action="/search">
-                 <input type="hidden" name="filter_manual[]" value="/guidance/content-design">
-                 <input id="search-box" type="text" name="q" placeholder="Search Service Manual">
-                 <button type="submit" style="">search</button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <main id="content" role="main">
 
