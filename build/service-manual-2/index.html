@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>GOV.UK Notify</title>
+    <title>Service Manual</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -96,7 +96,7 @@
       <script src="../javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="govuk-notify govuk-notify_index" data-languages="[]">
+  <body class="service-manual-2 service-manual-2_index" data-languages="[]">
 
    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
@@ -106,7 +106,7 @@
     <div class="header-global">
       <div class="header-logo">
         <a href="index.html" id="logo" class="content">
-          <img src="{{ asset_path }}images/gov.uk_logotype_crown_invert_trans.png?0.17.3" width="35" height="31" alt=""> GOV.UK <span class="product-name">Notify</span>
+          <img src="{{ asset_path }}images/gov.uk_logotype_crown_invert_trans.png?0.17.3" width="35" height="31" alt=""> GOV.UK <span class="product-name">Service Manual</span>
           <span class="phase-banner-beta"><strong class="phase-tag">beta</strong></span>
         </a>
       </div>
@@ -118,10 +118,11 @@
         <nav id="proposition-menu">
           <ul id="proposition-links" class="right-aligned">
 
-              <li><a href="feedback.html">Feedback</a></li>
+              <!-- <li><a href="signin.html">Sign in</a></li>
 <li><a href="documentation.html">Documentation</a></li>
 <li><a href="getstarted.html">Get started</a></li>
 <li><a href="index.html" class="active">About</a></li>
+-->
 
           </ul>
         </nav>
@@ -132,58 +133,155 @@
 </header>
 <div id="global-header-bar"></div>
 
-    <div class="product-style">
-  <div id="content">
+    <div class="product-style" style="padding-bottom: 0px; background: #0B0C0C;">
+  <div id="content" style="padding-bottom: 36px;">
     <div class="grid-row">
-      <div class="column-two-thirds">
+      <div class="column-two-thirds" style="width: 70%;">
 
-        <h1 class="heading-xlarge">GOV.UK Notify</h1>
-
-        <p class="lede"> 
-        GOV.UK Notify makes it easy to send text messages and emails to your users.
-        </p>
-
-        <p>
-            If you work for a UK government department or agency you can try it now.
-        </p>
-
-        <a class="button button-start" href="#" role="button">Create an account</a> or <a href="">sign in</a> if you&rsquo;ve used it before
+        <h1 class="heading-xlarge">Design, build and run public services in the internet era</h1>
 
       </div>
+
+      <div class="column-two-thirds">
+        <div class="in-manual-search">
+          <form action="/search">
+                 <input type="hidden" name="filter_manual[]" value="/guidance/content-design">
+                 <input id="search-box" type="text" name="q" placeholder="Search Service Manual">
+                 <button type="submit" style="">search</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<p><main id="content" class="content" role="main"></p>
+<p><main id="content" role="main"></p>
+
+<!-- Top: Guidance -->
+
+<!-- row 1 -->
 
 <div class="grid-row">
+
     <div class="column-one-third">
-      <h2>Contact</h2>
-      <ul>
-        <li><a href="/feedback">Support and feedback</a></li>
-        <li><a href="https://ukgovernmentdigital.slack.com/messages/govuk-notify">Chat with the Notify team</a></li>
-      </ul>
+      <h2 class="heading-medium">Products to build and run services</h2>
     </div>
+
     <div class="column-one-third">
-      <h2>Help</h2>
-      <ul>
-        <li><a href="/terms">Terms of use</a></li>
-        <li><a href="/trial-mode">Trial mode</a></li>
-        <li><a href="/pricing">Pricing</a></li>
-        <li><a href="/delivery-and-failure">Delivery and failure</a></li>
-      </ul>
+      <br>
+      <h4 class="heading-small"><a href="/govuk-notify/index.html">GOV.UK Notify</a></h4>
+      <h4 class="heading-small"><a href="/govuk-notify/index.html">GOV.UK Pay</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Verify</a></h4>
+      <h4 class="heading-small"><a href="/govuk-paas/index.html">GOV.UK Cloud hosting</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Single Sign On</a></h4>
     </div>
-    <div class="column-one-third">
-      <h2>API documentation</h2>
-      <ul>           
-        <li><a href="documentation.html#installation">Java client</a></li>
-        <li><a href="documentation.html#installation10">Node JS client</a></li>
-        <li><a href="documentation.html#php-client">PHP client</a></li> 
-        <li><a href="documentation.html#installation20">Python client</a></li>
-        <li><a href="documentation.html#installation26">Ruby client</a></li>  
-      </ul>
-    </div>
+    
 </div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Service design</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">GOV.UK Frontend</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Prototype Kit</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Patterns</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Guidance for service teams</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">Agile delivery</a></h4>
+      <h4 class="heading-small"><a href="#">Funding and buying</a></h4>
+      <h4 class="heading-small"><a href="#">Helping people to use your service</a></h4>
+      <h4 class="heading-small"><a href="#">Measuring success</a></h4>
+      <h4 class="heading-small"><a href="#">Service assessments</a></h4>
+      <h4 class="heading-small"><a href="#">Digital Service Standard</a></h4>
+      <h4 class="heading-small"><a href="#">Design</a></h4>
+      <h4 class="heading-small"><a href="#">The team</a></h4>
+      <h4 class="heading-small"><a href="#">Communities</a></h4>
+      <h4 class="heading-small"><a href="#">Technology</a></h4>
+      <h4 class="heading-small"><a href="#">User research</a></h4>
+    </div>
+
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Data to build and run services</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">Registers</a></h4>
+      <h4 class="heading-small"><a href="#">Find data</a></h4>
+      <h4 class="heading-small"><a href="#">Service data</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Find technology and people</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">Digital Marketplace</a></h4>
+      <h4 class="heading-small"><a href="#">Webchat</a></h4>
+      <h4 class="heading-small"><a href="#">Staff computers</a></h4>
+      <h4 class="heading-small"><a href="#">Wi-Fi</a></h4>
+      <h4 class="heading-small"><a href="#">Email</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Publishing</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">Publish on GOV.UK</a></h4>
+      <h4 class="heading-small"><a href="#">Campaigns</a></h4>
+      <h4 class="heading-small"><a href="#">Style guide</a></h4>
+      <h4 class="heading-small"><a href="#">Publish data</a></h4>
+      <h4 class="heading-small"><a href="#">GOV.UK Blogs</a></h4>
+    </div>
+    
+</div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      <h2 class="heading-medium">Training</h2>
+    </div>
+
+    <div class="column-one-third">
+      <br>
+      <h4 class="heading-small"><a href="#">Digital induction</a></h4>
+      <h4 class="heading-small"><a href="#">Service manager training</a></h4>
+      <h4 class="heading-small"><a href="#">Design training</a></h4>
+    </div>
+    
+</div>
+
+<!-- Bottom: Training -->
 
 <p></main></p>
 
@@ -207,6 +305,7 @@
 
       <li><a href="/service-manual/index.html">Service Manual</a></li>
 
+      <li><a href="/notify/index.html">GOV.UK Notify</a></li>
 
       <li><a href="/frontend/index.html">GOV.UK Frontend</a></li>
 
