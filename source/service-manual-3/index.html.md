@@ -65,7 +65,7 @@ title: Service Manual
       <h2 class="heading-medium"><a href="publishing.html">Publishing</a></h2>
       <p>Publishing on GOV.UK, campaign sites, blogs, style guides and publishing data</p>
 
-      <h2 class="heading-medium"><a href="#">Digital Service Standard</a></h2>
+      <h2 class="heading-medium"><a href="https://www.gov.uk/service-manual/service-standard">Digital Service Standard</a></h2>
       <p>The Digital Service Standard is a set of 18 criteria to help you create and run good digital services</p>
       
     </div>

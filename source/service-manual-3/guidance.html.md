@@ -17,17 +17,17 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/agile-delivery/agile-government-services-introduction">Agile delivery</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/agile-delivery">Agile delivery</a></h4>
       <p>What it it, why it works and how to do it</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Funding and buying</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/agile-delivery/spend-controls-check-if-you-need-approval-to-spend-money-on-a-service">Funding and buying</a></h4>
       <p>How to get money, buy things and use the Digital Marketplace</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Helping people to use your service</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/helping-people-to-use-your-service">Helping people to use your service</a></h4>
       <p>How to make your service accessible and increase digital take-up</p>
     </div>
 
@@ -38,17 +38,17 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Measuring success</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/measuring-success">Measuring success</a></h4>
       <p>Data you need to measure and monitor services</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Service assessments</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/service-assessments">Service assessments</a></h4>
       <p>How assessments work and who needs them</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Design</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/design">Design</a></h4>
       <p>Designing services, including using patterns and prototypes</p>
     </div>
 
@@ -59,17 +59,17 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">The team</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/the-team">The team</a></h4>
       <p>Who you'll need to design and build a successful service</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Technology</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/technology">Technology</a></h4>
       <p>How to build or buy secure systems that meet users needs</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">User research</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/user-research">User research</a></h4>
       <p>What user researchers do and what to look for</p>
     </div>
 
