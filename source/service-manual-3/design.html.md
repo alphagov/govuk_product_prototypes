@@ -16,12 +16,12 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/govuk-frontend">GOV.UK Frontend</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/govuk-frontend">GOV.UK Frontend</a></h4>
       <p>Build accessible, responsive web interfaces for government</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/prototype-kit">GOV.UK Prototype Kit</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/prototype-kit">GOV.UK Prototype Kit</a></h4>
       <p>Make HTML prototypes for user research and service design</p>
     </div>
 
