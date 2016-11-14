@@ -39,7 +39,7 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/govuk-paas">GOV.UK Cloud hosting</a></h4>
+      <h4 class="heading-small"><a href="/govuk-paas">GOV.UK Platform as a Service</a></h4>
       <p>Quickly, simply deploy your service on a government hosted platform</p>
     </div>
 
