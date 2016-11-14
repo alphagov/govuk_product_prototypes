@@ -75,19 +75,15 @@ layout: service_manual
 
 </div>
 
-<!-- Bottom: Guidance -->
+<div class="grid-row">
 
-<!-- Top: Service standard and communities -->
-
-<div class="grid-row" id="standard">
-
-    <div class="column-one-half">
-      <h2 class="heading-medium"><a href="https://www.gov.uk/service-manual/communities">Communities</a></h2>
+    <div class="column-one-third">
+      <h2 class="heading-small"><a href="https://www.gov.uk/service-manual/communities">Communities</a></h2>
       <p>Connect with practitioners across government: discussions, blogs and resources.</p>
     </div>
 
 </div>
 
-<!-- Bottom: Service standard and communities -->
+<!-- Bottom: Guidance -->
 
 </main>
