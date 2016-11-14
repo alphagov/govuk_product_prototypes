@@ -16,18 +16,18 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/the-team/design-training">Digital induction</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/government/groups/digital-academy">Digital induction</a></h4>
       <p>Introduction to the internet and how it works in government</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Service manager training</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/the-team/service-manager-induction-programme">Service manager training</a></h4>
       <p>
        How to lead service teams and projects</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="#">Design training</a></h4>
+      <h4 class="heading-small"><a href="https://www.gov.uk/service-manual/the-team/design-training">Design training</a></h4>
       <p>Design in government, how designers work and prototyping</p>
     </div>
 
