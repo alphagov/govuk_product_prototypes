@@ -19,7 +19,7 @@ title: GOV.UK Prototype Kit
         </p>
 
 
-        <a class="button button-start" href="#" role="button">Download it now</a>
+        <a class="button button-start" href="https://govuk-prototype-kit.herokuapp.com/docs" role="button">Download it now</a>
 
       </div>
     </div>
