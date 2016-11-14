@@ -18,12 +18,12 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/govuk-notify">GOV.UK Notify</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/govuk-notify">GOV.UK Notify</a></h4>
       <p>Send secure text messages, emails or letters to users</p>
     </div>
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/govuk-pay">GOV.UK Pay</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/govuk-pay/">GOV.UK Pay</a></h4>
       <p>Make it simple to make payments online</p>
     </div>
 
@@ -39,7 +39,7 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/govuk-paas">GOV.UK Platform as a Service</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/govuk-paas">GOV.UK Platform as a Service</a></h4>
       <p>Quickly, simply deploy your service on a government hosted platform</p>
     </div>
 
