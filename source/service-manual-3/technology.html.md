@@ -14,7 +14,7 @@ layout: service_manual
 <div class="grid-row">
 
     <div class="column-one-third">
-      <h4 class="heading-small"><a href="/digital-marketplace">Digital Marketplace</a></h4>
+      <h4 class="heading-small"><a href="/govuk_product_prototypes/digital-marketplace">Digital Marketplace</a></h4>
       <p>Find technology or people for digital projects in the public sector</p>
     </div>
 

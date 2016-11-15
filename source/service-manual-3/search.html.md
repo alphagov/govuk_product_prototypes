@@ -24,7 +24,7 @@ title: Service Manual
         </div>
 
         <h3 class="heading-medium" style="color: #000;">
-          6 results found in
+          7 results found in
           <p class="lede">GOV.UK Service Manual</p>
         </h3>
 
@@ -42,6 +42,14 @@ title: Service Manual
   <div class="column-two-thirds">
       <h3 class="heading-medium"><a href="/govuk-notify">GOV.UK Notify</a></h3>
       <p>Send secure text messages, emails or letters to users</p>
+
+  </div>
+</div>
+
+<div class="grid-row" id="data">
+  <div class="column-two-thirds">
+      <h3 class="heading-medium"><a href="https://www.gov.uk/service-manual/technology/using-common-components">Using common components</a></h3>
+      <p>make it easy to build user-centred government services</p>
 
   </div>
 </div>
