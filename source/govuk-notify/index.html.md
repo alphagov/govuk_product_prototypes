@@ -22,7 +22,7 @@ title: GOV.UK Notify
         	If you work for a UK government department or agency you can try it now.
         </p>
 
-        <a class="button button-start" href="#" role="button">Create an account</a> or <a href="">sign in</a> if you've used it before
+        <a class="button button-start" href="https://www.notifications.service.gov.uk/register" role="button">Create an account</a> or <a href="">sign in</a> if you've used it before
 
       </div>
     </div>
