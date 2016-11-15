@@ -56,7 +56,7 @@ title: Service Manual
 
     <div class="column-one-half">
 
-      <h2 class="heading-medium"><a href="gaap.html">Products to build and run services</a></h2>
+      <h2 class="heading-medium"><a href="gaap.html">Components to build and run services</a></h2>
       <p>Shared products such as GOV.UK Pay, GOV.UK Notify, GOV.UK Cloud Hosting and GOV.UK Verify</p>
 
       <h2 class="heading-medium"><a href="data.html">Data to build and run services</a></h2>

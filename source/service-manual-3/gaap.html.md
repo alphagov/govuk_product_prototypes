@@ -9,7 +9,7 @@ layout: service_manual
 <div class="grid-row" id="products">
   <div class="column-two-thirds">
     <hr>
-    <h2 class="heading-medium">Products to build and run services</h2>
+    <h2 class="heading-medium">Components to build and run services</h2>
   </div>
 </div>
 
